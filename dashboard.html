@@ -33,6 +33,16 @@
         /* Scanner Section */
         .scanner-section { text-align: center; }
         .scanner-section img { width: 30px; margin-top: 10px; filter: brightness(0) invert(1); }
+        .scanner-upload { background: rgba(255, 255, 255, 0.15); padding: 15px; border-radius: 10px; border: 2px dashed #4ecdc4; cursor: pointer; transition: all 0.3s ease; margin-bottom: 15px; }
+        .scanner-upload:hover { background: rgba(78, 205, 196, 0.2); border-color: #ff6b6b; }
+        .scanner-upload p { font-size: 14px; color: #e0e0e0; }
+        input[type="file"] { display: none; }
+        #scanner-preview { max-height: 150px; overflow-y: auto; margin-bottom: 15px; }
+        .preview-image { max-width: 100%; max-height: 100px; margin: 5px auto; border-radius: 5px; display: block; }
+        button { padding: 10px 20px; background: linear-gradient(90deg, #ff6b6b, #4ecdc4); color: #fff; border: none; border-radius: 10px; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; }
+        button:hover { background: linear-gradient(90deg, #4ecdc4, #ff6b6b); transform: scale(1.05); }
+        #scanner-download { display: none; margin-top: 10px; padding: 10px 20px; background: linear-gradient(90deg, #ff6b6b, #4ecdc4); color: #fff; text-decoration: none; border-radius: 10px; font-size: 14px; font-weight: 600; transition: all 0.3s ease; }
+        #scanner-download:hover { background: linear-gradient(90deg, #4ecdc4, #ff6b6b); transform: scale(1.05); }
 
         /* Main Content */
         .main-content { flex: 1; padding: 20px; overflow-y: auto; margin-left: 280px; }
@@ -123,7 +133,13 @@
             <!-- Scanner Section -->
             <div class="sidebar-section scanner-section">
                 <h3>Scanner</h3>
-                <p><a href="#" style="color: #4ecdc4;">Scanned Image to Convert PDF</a></p>
+                <label for="scannerInput" class="scanner-upload">
+                    <p>Upload Scanned Images</p>
+                </label>
+                <input type="file" id="scannerInput" accept="image/*" multiple>
+                <div id="scanner-preview"></div>
+                <button onclick="convertToPDF()">Convert to PDF</button>
+                <a id="scanner-download" download="scanned_images.pdf">Download PDF</a>
                 <img src="https://img.icons8.com/ios-filled/50/ffffff/scanner.png" alt="Scan Icon">
             </div>
 
@@ -165,9 +181,90 @@
         </div>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script>
+        const { jsPDF } = window.jspdf;
+
+        // Scanner Preview
+        document.getElementById('scannerInput').addEventListener('change', function(event) {
+            const files = event.target.files;
+            const previewContainer = document.getElementById('scanner-preview');
+            const downloadLink = document.getElementById('scanner-download');
+
+            previewContainer.innerHTML = '';
+            downloadLink.style.display = 'none';
+
+            if (files.length > 0) {
+                Array.from(files).forEach(file => {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        const img = document.createElement('img');
+                        img.src = e.target.result;
+                        img.className = 'preview-image';
+                        previewContainer.appendChild(img);
+                    };
+                    reader.readAsDataURL(file);
+                });
+            }
+        });
+
+        // Convert to PDF
+        function convertToPDF() {
+            const files = document.getElementById('scannerInput').files;
+            const downloadLink = document.getElementById('scanner-download');
+
+            if (files.length === 0) {
+                alert("Pehle images upload karo!");
+                return;
+            }
+
+            const doc = new jsPDF();
+            let yOffset = 10;
+
+            const loadImages = Array.from(files).map(file => {
+                return new Promise((resolve) => {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        const img = new Image();
+                        img.onload = function() {
+                            resolve({ src: e.target.result, width: img.width, height: img.height });
+                        };
+                        img.src = e.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                });
+            });
+
+            Promise.all(loadImages).then(images => {
+                images.forEach((image, index) => {
+                    const aspectRatio = image.width / image.height;
+                    const pdfWidth = 180;
+                    const pdfHeight = pdfWidth / aspectRatio;
+
+                    if (yOffset + pdfHeight > 270) {
+                        doc.addPage();
+                        yOffset = 10;
+                    }
+
+                    doc.addImage(image.src, 'JPEG', 15, yOffset, pdfWidth, pdfHeight);
+                    yOffset += pdfHeight + 10;
+
+                    if (index < images.length - 1 && yOffset < 270) {
+                        yOffset += 10;
+                    }
+                });
+
+                const pdfData = doc.output('datauristring');
+                downloadLink.href = pdfData;
+                downloadLink.style.display = 'inline-block';
+                downloadLink.click();
+            }).catch(err => {
+                alert("Error converting to PDF: " + err);
+            });
+        }
+
+        // Toggle Section (Placeholder)
         function toggleSection(sectionId) {
-            // Placeholder for section toggle logic
             console.log(`Toggled section: ${sectionId}`);
         }
     </script>
