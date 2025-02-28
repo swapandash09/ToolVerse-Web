@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scanned Image to PDF - ToolVerse</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460); min-height: 100vh; display: flex; justify-content: center; align-items: center; color: #fff; }
+        .container { background: rgba(255, 255, 255, 0.1); width: 450px; padding: 30px; border-radius: 20px; text-align: center; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4); backdrop-filter: blur(12px); transition: transform 0.3s ease; }
+        .container:hover { transform: scale(1.02); }
+        h1 { font-size: 28px; color: #ff6b6b; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700; display: flex; justify-content: center; align-items: center; }
+        h1 img { width: 40px; margin-right: 10px; filter: brightness(0) invert(1); }
+        
+        /* Upload Area */
+        .upload-area { background: rgba(255, 255, 255, 0.15); padding: 20px; border-radius: 15px; margin-bottom: 20px; border: 2px dashed #4ecdc4; cursor: pointer; transition: all 0.3s ease; }
+        .upload-area:hover { background: rgba(78, 205, 196, 0.2); border-color: #ff6b6b; }
+        .upload-area p { font-size: 16px; color: #e0e0e0; }
+        input[type="file"] { display: none; }
+
+        /* Preview Area */
+        #preview-container { max-height: 300px; overflow-y: auto; margin-bottom: 20px; }
+        .preview-image { max-width: 100%; max-height: 150px; margin: 10px auto; border-radius: 10px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); display: block; }
+
+        /* Controls */
+        .controls { display: flex; flex-direction: column; gap: 15px; }
+        button { padding: 12px 25px; background: linear-gradient(90deg, #ff6b6b, #4ecdc4); color: #fff; border: none; border-radius: 10px; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; }
+        button:hover { background: linear-gradient(90deg, #4ecdc4, #ff6b6b); transform: scale(1.05); }
+        #downloadLink { display: none; margin-top: 15px; padding: 10px 20px; background: linear-gradient(90deg, #ff6b6b, #4ecdc4); color: #fff; text-decoration: none; border-radius: 10px; font-size: 14px; font-weight: 600; transition: all 0.3s ease; }
+        #downloadLink:hover { background: linear-gradient(90deg, #4ecdc4, #ff6b6b); transform: scale(1.05); }
+        .back-btn { display: inline-block; margin-top: 20px; padding: 10px 20px; background: linear-gradient(90deg, #ff6b6b, #4ecdc4); color: #fff; text-decoration: none; border-radius: 10px; font-size: 14px; font-weight: 600; transition: all 0.3s ease; }
+        .back-btn:hover { background: linear-gradient(90deg, #4ecdc4, #ff6b6b); transform: scale(1.05); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>
+            <img src="https://img.icons8.com/color/50/000000/scanner.png" alt="Scanner Icon">
+            Scanned Image to PDF
+        </h1>
+        <label for="imageInput" class="upload-area">
+            <p>Click here to upload scanned images</p>
+        </label>
+        <input type="file" id="imageInput" accept="image/*" multiple>
+        <div id="preview-container"></div>
+        <div class="controls">
+            <button onclick="convertToPDF()">Convert to PDF</button>
+            <a id="downloadLink" download="scanned_images.pdf">Download PDF</a>
+        </div>
+        <a href="../dashboard.html" class="back-btn">Back to Dashboard</a>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="scanned_to_pdf.js"></script>
+</body>
+</html>
