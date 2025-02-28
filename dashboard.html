@@ -7,202 +7,169 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-        body { background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460); min-height: 100vh; color: #fff; overflow-x: hidden; }
+        body { background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460); min-height: 100vh; display: flex; color: #fff; overflow-x: hidden; }
 
         /* Main Container */
-        .app-container { display: flex; flex-direction: column; height: 100vh; max-width: 100%; background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(12px); }
+        .app-container { display: flex; width: 100%; height: 100vh; }
 
-        /* Header */
-        .header { background: linear-gradient(90deg, #ff6b6b, #4ecdc4); padding: 20px; text-align: center; box-shadow: 0 4px 25px rgba(0, 0, 0, 0.4); position: relative; }
-        .header h1 { font-size: 30px; letter-spacing: 3px; text-transform: uppercase; background: linear-gradient(90deg, #fff, #e0e0e0); -webkit-background-clip: text; color: transparent; font-weight: 700; }
-        .menu-toggle { position: absolute; right: 20px; top: 20px; font-size: 28px; cursor: pointer; color: #fff; transition: transform 0.3s ease; }
-        .menu-toggle:hover { transform: rotate(90deg); }
+        /* Sidebar (Left Panel) */
+        .sidebar { width: 280px; background: linear-gradient(135deg, #16213e, #0f3460); padding: 20px; box-shadow: 2px 0 20px rgba(0, 0, 0, 0.4); position: fixed; height: 100%; overflow-y: auto; }
+        .logo-section { display: flex; align-items: center; margin-bottom: 20px; }
+        .logo { width: 50px; height: 50px; margin-right: 10px; filter: drop-shadow(0 0 10px rgba(78, 205, 196, 0.6)); }
+        .logo-section h1 { font-size: 24px; background: linear-gradient(90deg, #ff6b6b, #4ecdc4); -webkit-background-clip: text; color: transparent; font-weight: 700; }
+        .sidebar-section { margin-bottom: 25px; }
+        .sidebar-section h3 { font-size: 18px; color: #ff6b6b; margin-bottom: 10px; text-transform: uppercase; }
+        .sidebar-section ul { list-style: none; }
+        .sidebar-section ul li { padding: 10px 15px; background: rgba(255, 255, 255, 0.1); margin-bottom: 8px; border-radius: 10px; transition: all 0.3s ease; }
+        .sidebar-section ul li:hover { background: rgba(78, 205, 196, 0.3); transform: translateX(5px); }
+        .sidebar-section ul li a { color: #e0e0e0; text-decoration: none; font-size: 14px; font-weight: 600; }
+        .recent-files img, .downloads img { width: 40px; height: 40px; border-radius: 5px; margin-right: 10px; object-fit: cover; }
 
-        /* Content */
-        .content { flex: 1; overflow-y: auto; padding: 30px; }
-        .section { margin-bottom: 35px; background: rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 25px; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3); transition: transform 0.3s ease; }
-        .section:hover { transform: translateY(-8px); }
-        .section h2 { font-size: 24px; color: #ff6b6b; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1.5px; display: flex; align-items: center; }
-        .section h2 img { width: 28px; margin-right: 10px; filter: brightness(0) invert(1); }
-        .section p { font-size: 16px; color: #e0e0e0; line-height: 1.6; }
+        /* Tools Inline */
+        .tools-inline { display: flex; gap: 10px; }
+        .tools-inline a { background: rgba(255, 255, 255, 0.15); padding: 8px 12px; border-radius: 8px; font-size: 13px; transition: all 0.3s ease; }
+        .tools-inline a:hover { background: rgba(255, 107, 107, 0.3); }
 
-        /* Tool Grid */
-        .tool-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 25px; }
-        .tool-item { background: rgba(255, 255, 255, 0.15); padding: 20px; border-radius: 15px; text-align: center; transition: all 0.3s ease; border: 2px solid transparent; }
-        .tool-item:hover { transform: scale(1.08); box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4); border-color: #4ecdc4; }
-        .tool-item a { text-decoration: none; color: #fff; font-size: 16px; font-weight: 600; transition: color 0.3s ease; display: block; }
-        .tool-item a:hover { color: #ff6b6b; }
-        .tool-item img { width: 50px; margin-bottom: 10px; transition: transform 0.3s ease; }
-        .tool-item:hover img { transform: rotate(10deg); }
+        /* Scanner Section */
+        .scanner-section { text-align: center; }
+        .scanner-section img { width: 30px; margin-top: 10px; filter: brightness(0) invert(1); }
 
-        /* Sidebar (Settings) */
-        .sidebar { position: fixed; top: 0; right: -300px; width: 300px; height: 100%; background: linear-gradient(135deg, #16213e, #0f3460); padding: 30px; transition: right 0.3s ease; z-index: 100; }
-        .sidebar.active { right: 0; }
-        .sidebar h3 { font-size: 26px; color: #ff6b6b; margin-bottom: 20px; text-transform: uppercase; }
-        .sidebar a, .sidebar button { display: block; color: #e0e0e0; text-decoration: none; padding: 12px 15px; margin: 8px 0; background: rgba(255, 255, 255, 0.1); border-radius: 10px; text-align: left; font-size: 16px; cursor: pointer; transition: all 0.3s ease; border: none; }
-        .sidebar a:hover, .sidebar button:hover { background: rgba(78, 205, 196, 0.3); color: #fff; }
-
-        /* Theme Dropdown */
-        .theme-select { margin-top: 15px; }
-        .theme-select select { width: 100%; padding: 10px; border: 2px solid #4ecdc4; border-radius: 10px; background: rgba(255, 255, 255, 0.1); color: #fff; font-size: 16px; cursor: pointer; }
+        /* Main Content */
+        .main-content { flex: 1; padding: 20px; overflow-y: auto; margin-left: 280px; }
+        .profile { position: absolute; top: 20px; right: 20px; background: rgba(255, 255, 255, 0.1); padding: 10px 20px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); }
+        .profile a { color: #ff6b6b; text-decoration: none; font-size: 16px; font-weight: 600; transition: color 0.3s ease; }
+        .profile a:hover { color: #4ecdc4; }
 
         /* Bottom Navigation */
-        .bottom-nav { display: flex; justify-content: space-around; background: linear-gradient(90deg, #ff6b6b, #4ecdc4); padding: 15px 0; position: fixed; bottom: 0; width: 100%; box-shadow: 0 -4px 25px rgba(0, 0, 0, 0.4); border-top: 1px solid rgba(255, 255, 255, 0.2); }
-        .nav-item { color: #fff; text-align: center; font-size: 14px; cursor: pointer; padding: 8px; transition: all 0.3s ease; }
+        .bottom-nav { display: flex; justify-content: space-around; background: linear-gradient(90deg, #ff6b6b, #4ecdc4); padding: 15px 0; position: fixed; bottom: 0; width: calc(100% - 280px); left: 280px; box-shadow: 0 -4px 25px rgba(0, 0, 0, 0.4); border-top: 1px solid rgba(255, 255, 255, 0.2); }
+        .nav-item { display: flex; flex-direction: column; align-items: center; color: #fff; font-size: 14px; cursor: pointer; padding: 8px; transition: all 0.3s ease; }
         .nav-item:hover { color: #e0e0e0; transform: scale(1.1); }
         .nav-item img { width: 30px; margin-bottom: 5px; filter: brightness(0) saturate(100%) invert(100%) sepia(0%) hue-rotate(0deg); }
 
         /* Responsive */
-        @media (min-width: 769px) {
-            .app-container { max-width: 500px; margin: 20px auto; border-radius: 25px; box-shadow: 0 0 40px rgba(0, 0, 0, 0.5); }
-            .sidebar { right: -320px; width: 320px; }
-            .header h1 { font-size: 34px; }
-            .tool-grid { grid-template-columns: repeat(2, 1fr); }
+        @media (max-width: 768px) {
+            .sidebar { width: 100%; height: auto; position: relative; }
+            .main-content { margin-left: 0; }
+            .bottom-nav { width: 100%; left: 0; }
+            .profile { top: 80px; right: 10px; }
         }
     </style>
 </head>
 <body>
     <div class="app-container">
-        <!-- Header -->
-        <div class="header">
-            <h1>ToolVerse</h1>
-            <div class="menu-toggle" onclick="toggleSidebar()">⚙️</div>
-        </div>
+        <!-- Sidebar (Left Panel) -->
+        <div class="sidebar">
+            <div class="logo-section">
+                <svg class="logo" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M50 10 L70 40 L60 40 L60 80 L40 80 L40 40 L30 40 Z" fill="url(#grad1)" stroke="#4ecdc4" stroke-width="4"/>
+                    <circle cx="50" cy="25" r="12" fill="#ff6b6b" opacity="0.9" />
+                    <defs>
+                        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#ff6b6b;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#4ecdc4;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <h1>ToolVerse</h1>
+            </div>
 
-        <!-- Content -->
-        <div class="content">
-            <!-- Home Section -->
-            <div class="section" id="home">
-                <h2><img src="https://img.icons8.com/ios-filled/50/ffffff/home.png" alt="Home Icon"> Home</h2>
-                <p>Welcome to ToolVerse! Unleash your creativity with our vibrant toolkit designed for innovators like you.</p>
+            <!-- Recent Files -->
+            <div class="sidebar-section">
+                <h3>Recent Files</h3>
+                <ul>
+                    <li><img src="https://via.placeholder.com/40" alt="Recent File"><a href="#">File1.jpg</a></li>
+                    <li><img src="https://via.placeholder.com/40" alt="Recent File"><a href="#">File2.png</a></li>
+                </ul>
+            </div>
+
+            <!-- Downloads -->
+            <div class="sidebar-section">
+                <h3>Downloads</h3>
+                <ul>
+                    <li><img src="https://via.placeholder.com/40" alt="Download"><a href="#">Compressed_Image.jpg</a></li>
+                    <li><img src="https://via.placeholder.com/40" alt="Download"><a href="#">Text_Doc.txt</a></li>
+                </ul>
+            </div>
+
+            <!-- Files Section -->
+            <div class="sidebar-section">
+                <h3>Files</h3>
+                <ul>
+                    <li><a href="#" onclick="toggleSection('my_storage')">My Storage</a></li>
+                    <li><a href="#" onclick="toggleSection('internal_storage')">Internal Storage</a></li>
+                    <li><a href="#" onclick="toggleSection('downloads')">Downloads</a></li>
+                </ul>
             </div>
 
             <!-- Tools Section -->
-            <div class="section" id="tools" style="display: none;">
-                <h2><img src="https://img.icons8.com/ios-filled/50/ffffff/toolbox.png" alt="Tools Icon"> Tools</h2>
-                <div class="tool-grid">
-                    <div class="tool-item">
-                        <img src="https://img.icons8.com/color/50/000000/image.png" alt="Image Compressor Icon">
-                        <a href="tools/image_compressor.html">Image Compressor</a>
-                    </div>
-                    <div class="tool-item">
-                        <img src="https://img.icons8.com/color/50/000000/pdf.png" alt="PDF to JPG Icon">
-                        <a href="tools/pdf_to_jpg.html">PDF to JPG</a>
-                    </div>
-                    <div class="tool-item">
-                        <img src="https://img.icons8.com/color/50/000000/edit.png" alt="Text Editor Icon">
-                        <a href="tools/text_editor.html">Text Editor</a>
-                    </div>
-                    <div class="tool-item">
-                        <img src="https://img.icons8.com/color/50/000000/merge-files.png" alt="File Merger Icon">
-                        <a href="tools/file_merger.html">File Merger</a>
-                    </div>
-                    <div class="tool-item">
-                        <img src="https://img.icons8.com/color/50/000000/resize.png" alt="Image Resizer Icon">
-                        <a href="tools/image_resizer.html">Image Resizer</a>
-                    </div>
-                    <div class="tool-item">
-                        <img src="https://img.icons8.com/color/50/000000/qr-code.png" alt="QR Code Generator Icon">
-                        <a href="tools/qr_code_generator.html">QR Code Generator</a>
-                    </div>
-                    <div class="tool-item">
-                        <img src="https://img.icons8.com/color/50/000000/color-dropper.png" alt="Color Picker Icon">
-                        <a href="tools/color_picker.html">Color Picker</a>
-                    </div>
-                    <div class="tool-item">
-                        <img src="https://img.icons8.com/color/50/000000/microphone.png" alt="Voice to Text Icon">
-                        <a href="tools/voice_to_text.html">Voice to Text</a>
-                    </div>
+            <div class="sidebar-section">
+                <h3>Tools</h3>
+                <div class="tools-inline">
+                    <a href="tools/image_compressor.html">Image Compressor</a>
+                    <a href="tools/text_editor.html">Text Editor</a>
+                    <a href="tools/qr_code_generator.html">QR Code</a>
+                </div>
+                <div class="tools-inline" style="margin-top: 10px;">
+                    <a href="tools/pdf_to_jpg.html">PDF to JPG</a>
+                    <a href="tools/file_merger.html">File Merger</a>
+                    <a href="tools/image_resizer.html">Image Resizer</a>
+                </div>
+                <div class="tools-inline" style="margin-top: 10px;">
+                    <a href="tools/color_picker.html">Color Picker</a>
+                    <a href="tools/voice_to_text.html">Voice to Text</a>
                 </div>
             </div>
 
-            <!-- Profile Section -->
-            <div class="section" id="profile" style="display: none;">
-                <h2><img src="https://img.icons8.com/ios-filled/50/ffffff/user.png" alt="Profile Icon"> Profile</h2>
-                <p>Name: [Your Name]<br>Email: user@example.com<br>Joined: February 28, 2025<br>Manage your account and personalize your ToolVerse experience here.</p>
+            <!-- Scanner Section -->
+            <div class="sidebar-section scanner-section">
+                <h3>Scanner</h3>
+                <p><a href="#" style="color: #4ecdc4;">Scanned Image to Convert PDF</a></p>
+                <img src="https://img.icons8.com/ios-filled/50/ffffff/scanner.png" alt="Scan Icon">
             </div>
 
-            <!-- About Section -->
-            <div class="section" id="about" style="display: none;">
-                <h2><img src="https://img.icons8.com/ios-filled/50/ffffff/info.png" alt="About Icon"> About</h2>
-                <p>ToolVerse is a creative platform designed to empower users with innovative tools for productivity and fun. Built by a passionate team for explorers everywhere.</p>
-            </div>
-
-            <!-- Services Section -->
-            <div class="section" id="services" style="display: none;">
-                <h2><img src="https://img.icons8.com/ios-filled/50/ffffff/services.png" alt="Services Icon"> Services</h2>
-                <p>We provide cutting-edge tools for file management, content creation, and more. Explore our growing collection and boost your workflow today!</p>
-            </div>
-
-            <!-- Team & Conditions Section -->
-            <div class="section" id="team_conditions" style="display: none;">
-                <h2><img src="https://img.icons8.com/ios-filled/50/ffffff/group.png" alt="Team Icon"> Team & Conditions</h2>
-                <p><strong>Team:</strong> Created by a group of tech enthusiasts.<br><strong>Conditions:</strong> Use responsibly. All rights reserved © ToolVerse 2025.</p>
+            <!-- Settings Section -->
+            <div class="sidebar-section">
+                <h3>Settings</h3>
+                <ul>
+                    <li><a href="#">Preferences</a></li>
+                    <li><a href="#">Themes</a></li>
+                </ul>
             </div>
         </div>
 
-        <!-- Sidebar (Settings) -->
-        <div class="sidebar">
-            <h3>Settings</h3>
-            <a href="#" onclick="showSection('home'); toggleSidebar();">Home</a>
-            <a href="#" onclick="showSection('tools'); toggleSidebar();">Tools</a>
-            <a href="#" onclick="showSection('profile'); toggleSidebar();">Profile</a>
-            <a href="#" onclick="showSection('about'); toggleSidebar();">About</a>
-            <a href="#" onclick="showSection('services'); toggleSidebar();">Services</a>
-            <a href="#" onclick="showSection('team_conditions'); toggleSidebar();">Team & Conditions</a>
-            <div class="theme-select">
-                <select onchange="applyTheme(this.value)">
-                    <option value="vibrant">Vibrant (Default)</option>
-                    <option value="dark">Dark</option>
-                    <option value="light">Light</option>
-                </select>
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="profile">
+                <a href="#">Login</a>
             </div>
         </div>
 
         <!-- Bottom Navigation -->
         <div class="bottom-nav">
-            <div class="nav-item" onclick="showSection('home')">
+            <div class="nav-item" onclick="toggleSection('home')">
                 <img src="https://img.icons8.com/ios-filled/50/ffffff/home.png" alt="Home Icon">
                 <p>Home</p>
             </div>
-            <div class="nav-item" onclick="showSection('tools')">
+            <div class="nav-item" onclick="toggleSection('files')">
+                <img src="https://img.icons8.com/ios-filled/50/ffffff/folder.png" alt="Files Icon">
+                <p>Files</p>
+            </div>
+            <div class="nav-item" onclick="toggleSection('tools')">
                 <img src="https://img.icons8.com/ios-filled/50/ffffff/toolbox.png" alt="Tools Icon">
                 <p>Tools</p>
+            </div>
+            <div class="nav-item" onclick="toggleSection('scanner')">
+                <img src="https://img.icons8.com/ios-filled/50/ffffff/scanner.png" alt="Scanner Icon">
+                <p>Scanner</p>
             </div>
         </div>
     </div>
 
     <script>
-        // Sidebar Toggle
-        function toggleSidebar() {
-            document.querySelector('.sidebar').classList.toggle('active');
+        function toggleSection(sectionId) {
+            // Placeholder for section toggle logic
+            console.log(`Toggled section: ${sectionId}`);
         }
-
-        // Section Switch
-        function showSection(sectionId) {
-            document.querySelectorAll('.section').forEach(section => {
-                section.style.display = 'none';
-            });
-            document.getElementById(sectionId).style.display = 'block';
-        }
-
-        // Theme Switch
-        function applyTheme(theme) {
-            const body = document.body;
-            if (theme === 'dark') {
-                body.style.background = 'linear-gradient(135deg, #0f2027, #203a43, #2c5364)';
-                body.style.color = '#fff';
-            } else if (theme === 'light') {
-                body.style.background = 'linear-gradient(135deg, #f5f7fa, #c3cfe2)';
-                body.style.color = '#333';
-            } else { // Vibrant (Default)
-                body.style.background = 'linear-gradient(135deg, #1a1a2e, #16213e, #0f3460)';
-                body.style.color = '#fff';
-            }
-        }
-
-        // Default to Home
-        showSection('home');
     </script>
 </body>
-</html>to 
+</html>
