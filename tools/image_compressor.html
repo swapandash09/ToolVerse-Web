@@ -8,19 +8,18 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
         body { background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460); min-height: 100vh; display: flex; justify-content: center; align-items: center; color: #fff; }
-        
-        /* Container */
         .container { background: rgba(255, 255, 255, 0.1); width: 400px; padding: 30px; border-radius: 20px; text-align: center; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4); transition: transform 0.3s ease; backdrop-filter: blur(12px); }
         .container:hover { transform: scale(1.02); }
-
-        /* Heading */
         h1 { font-size: 28px; color: #ff6b6b; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700; display: flex; justify-content: center; align-items: center; }
         h1 img { width: 40px; margin-right: 10px; filter: brightness(0) invert(1); }
-
-        /* Description */
-        p { font-size: 16px; color: #e0e0e0; line-height: 1.6; }
-
-        /* Back Button */
+        input[type="file"] { display: none; }
+        .custom-file-upload { display: inline-block; padding: 12px 25px; background: rgba(255, 255, 255, 0.15); color: #fff; border: 2px solid #4ecdc4; border-radius: 10px; cursor: pointer; margin-bottom: 20px; transition: all 0.3s ease; }
+        .custom-file-upload:hover { background: rgba(78, 205, 196, 0.3); }
+        select { width: 100%; padding: 12px; margin-bottom: 20px; border-radius: 10px; background: rgba(255, 255, 255, 0.15); color: #fff; border: 2px solid #4ecdc4; font-size: 16px; }
+        button { padding: 12px 25px; background: linear-gradient(90deg, #ff6b6b, #4ecdc4); color: #fff; border: none; border-radius: 10px; font-size: 14px; font-weight: 600; cursor: pointer; margin: 5px; transition: all 0.3s ease; }
+        button:hover { background: linear-gradient(90deg, #4ecdc4, #ff6b6b); transform: scale(1.05); }
+        #downloadLink { display: none; margin-top: 20px; padding: 10px 20px; background: linear-gradient(90deg, #ff6b6b, #4ecdc4); color: #fff; text-decoration: none; border-radius: 10px; font-size: 14px; font-weight: 600; transition: all 0.3s ease; }
+        #downloadLink:hover { background: linear-gradient(90deg, #4ecdc4, #ff6b6b); transform: scale(1.05); }
         .back-btn { display: inline-block; margin-top: 20px; padding: 10px 20px; background: linear-gradient(90deg, #ff6b6b, #4ecdc4); color: #fff; text-decoration: none; border-radius: 10px; font-size: 14px; font-weight: 600; transition: all 0.3s ease; }
         .back-btn:hover { background: linear-gradient(90deg, #4ecdc4, #ff6b6b); transform: scale(1.05); }
     </style>
@@ -31,8 +30,18 @@
             <img src="https://img.icons8.com/color/50/000000/image.png" alt="Image Compressor Icon">
             Image Compressor
         </h1>
-        <p>This feature requires a backend and is under development. Stay tuned for exciting updates!</p>
+        <label for="imageInput" class="custom-file-upload">Choose Image</label>
+        <input type="file" id="imageInput" accept="image/*">
+        <select id="quality">
+            <option value="0.9">High (90%)</option>
+            <option value="0.7" selected>Medium (70%)</option>
+            <option value="0.5">Low (50%)</option>
+        </select>
+        <button onclick="compressImage()">Compress Image</button>
+        <a id="downloadLink" download="compressed_image.jpg">Download Compressed Image</a>
         <a href="../dashboard.html" class="back-btn">Back to Dashboard</a>
     </div>
+
+    <script src="image_compressor.js"></script>
 </body>
 </html>
