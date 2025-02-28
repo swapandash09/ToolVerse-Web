@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToolVerse - Dashboard</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+        body { background: linear-gradient(135deg, #0f2027, #203a43); min-height: 100vh; color: #fff; }
+        .app-container { display: flex; flex-direction: column; height: 100vh; }
+        .header { background: linear-gradient(90deg, #00c4cc, #7d2ae8); padding: 15px; text-align: center; }
+        .header h1 { font-size: 24px; color: #fff; }
+        .content { flex: 1; padding: 20px; }
+        .section { margin-bottom: 20px; background: rgba(255, 255, 255, 0.1); padding: 15px; border-radius: 10px; }
+        .section h2 { font-size: 20px; color: #00c4cc; margin-bottom: 10px; }
+        .tool-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 10px; }
+        .tool-item { background: rgba(255, 255, 255, 0.2); padding: 10px; border-radius: 8px; text-align: center; }
+        .tool-item a { text-decoration: none; color: #e0e0e0; font-size: 14px; }
+        .bottom-nav { display: flex; justify-content: space-around; background: #00c4cc; padding: 10px; position: fixed; bottom: 0; width: 100%; }
+        .nav-item { color: #fff; font-size: 14px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <div class="header">
+            <h1>ToolVerse</h1>
+        </div>
+        <div class="content">
+            <div class="section" id="home">
+                <h2>Home</h2>
+                <p>Welcome to ToolVerse! Your ultimate toolkit awaits.</p>
+            </div>
+            <div class="section" id="tools" style="display: none;">
+                <h2>Tools</h2>
+                <div class="tool-grid">
+                    <div class="tool-item"><a href="tools/image_compressor.html">Image Compressor</a></div>
+                    <div class="tool-item"><a href="tools/pdf_to_jpg.html">PDF to JPG</a></div>
+                    <div class="tool-item"><a href="tools/text_editor.html">Text Editor</a></div>
+                    <div class="tool-item"><a href="tools/file_merger.html">File Merger</a></div>
+                    <div class="tool-item"><a href="tools/image_resizer.html">Image Resizer</a></div>
+                    <div class="tool-item"><a href="tools/qr_code_generator.html">QR Code Generator</a></div>
+                    <div class="tool-item"><a href="tools/color_picker.html">Color Picker</a></div>
+                    <div class="tool-item"><a href="tools/voice_to_text.html">Voice to Text</a></div>
+                </div>
+            </div>
+        </div>
+        <div class="bottom-nav">
+            <div class="nav-item" onclick="showSection('home')">Home</div>
+            <div class="nav-item" onclick="showSection('tools')">Tools</div>
+        </div>
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            document.querySelectorAll('.section').forEach(section => {
+                section.style.display = 'none';
+            });
+            document.getElementById(sectionId).style.display = 'block';
+        }
+        showSection('home');
+    </script>
+</body>
+</html>
