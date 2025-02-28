@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator - ToolVerse</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460); min-height: 100vh; display: flex; justify-content: center; align-items: center; color: #fff; }
+        .container { background: rgba(255, 255, 255, 0.1); width: 400px; padding: 30px; border-radius: 20px; text-align: center; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4); transition: transform 0.3s ease; backdrop-filter: blur(12px); }
+        .container:hover { transform: scale(1.02); }
+        h1 { font-size: 28px; color: #ff6b6b; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700; display: flex; justify-content: center; align-items: center; }
+        h1 img { width: 40px; margin-right: 10px; filter: brightness(0) invert(1); }
+        input { width: 100%; padding: 12px; margin-bottom: 20px; border-radius: 10px; background: rgba(255, 255, 255, 0.15); color: #fff; border: 2px solid #4ecdc4; font-size: 16px; }
+        button { padding: 12px 25px; background: linear-gradient(90deg, #ff6b6b, #4ecdc4); color: #fff; border: none; border-radius: 10px; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; }
+        button:hover { background: linear-gradient(90deg, #4ecdc4, #ff6b6b); transform: scale(1.05); }
+        #qrOutput { margin-top: 20px; }
+        .back-btn { display: inline-block; margin-top: 20px; padding: 10px 20px; background: linear-gradient(90deg, #ff6b6b, #4ecdc4); color: #fff; text-decoration: none; border-radius: 10px; font-size: 14px; font-weight: 600; transition: all 0.3s ease; }
+        .back-btn:hover { background: linear-gradient(90deg, #4ecdc4, #ff6b6b); transform: scale(1.05); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>
+            <img src="https://img.icons8.com/color/50/000000/qr-code.png" alt="QR Code Generator Icon">
+            QR Code Generator
+        </h1>
+        <input type="text" id="qrInput" placeholder="Enter text or URL">
+        <button onclick="generateQR()">Generate QR</button>
+        <div id="qrOutput"></div>
+        <a href="../dashboard.html" class="back-btn">Back to Dashboard</a>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script>
+        function generateQR() {
+            const text = document.getElementById('qrInput').value;
+            if (!text) { alert("Pehle text ya URL daalo!"); return; }
+            const qrOutput = document.getElementById('qrOutput');
+            qrOutput.innerHTML = '';
+            new QRCode(qrOutput, {
+                text: text,
+                width: 150,
+                height: 150,
+                colorDark: "#ff6b6b",
+                colorLight: "#ffffff"
+            });
+            setTimeout(() => {
+                const canvas = qrOutput.querySelector('canvas');
+                const url = canvas.toDataURL('image/png');
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'qr_code.png';
+                a.click();
+            }, 500);
+        }
+    </script>
+</body>
+</html>
