@@ -10,59 +10,69 @@
         body { background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460); min-height: 100vh; display: flex; color: #fff; overflow-x: hidden; }
 
         /* Main Container */
-        .app-container { display: flex; width: 100%; height: 100vh; }
+        .app-container { display: flex; flex-direction: column; width: 100%; height: 100vh; }
 
-        /* Sidebar (Left Panel) */
-        .sidebar { width: 280px; background: linear-gradient(135deg, #16213e, #0f3460); padding: 20px; box-shadow: 2px 0 20px rgba(0, 0, 0, 0.4); position: fixed; height: 100%; overflow-y: auto; transition: width 0.3s ease; }
-        .logo-section { display: flex; align-items: center; margin-bottom: 20px; }
-        .logo { width: 50px; height: 50px; margin-right: 10px; filter: drop-shadow(0 0 10px rgba(78, 205, 196, 0.6)); }
-        .logo-section h1 { font-size: 24px; background: linear-gradient(90deg, #ff6b6b, #4ecdc4); -webkit-background-clip: text; color: transparent; font-weight: 700; }
-        .sidebar-section { margin-bottom: 25px; }
-        .sidebar-section h3 { font-size: 18px; color: #ff6b6b; margin-bottom: 10px; text-transform: uppercase; }
-        .sidebar-section ul { list-style: none; }
-        .sidebar-section ul li { padding: 10px 15px; background: rgba(255, 255, 255, 0.1); margin-bottom: 8px; border-radius: 10px; transition: all 0.3s ease; }
-        .sidebar-section ul li:hover { background: rgba(78, 205, 196, 0.3); transform: translateX(5px); }
-        .sidebar-section ul li a { color: #e0e0e0; text-decoration: none; font-size: 14px; font-weight: 600; }
+        /* Header */
+        .header { display: flex; align-items: center; justify-content: space-between; background: linear-gradient(90deg, #ff6b6b, #4ecdc4); padding: 15px 20px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4); position: sticky; top: 0; z-index: 10; }
+        .logo-section { display: flex; align-items: center; }
+        .logo { width: 40px; height: 40px; margin-right: 10px; filter: drop-shadow(0 0 10px rgba(78, 205, 196, 0.6)); }
+        .header h1 { font-size: 22px; background: linear-gradient(90deg, #fff, #e0e0e0); -webkit-background-clip: text; color: transparent; font-weight: 700; }
+        .profile { background: rgba(255, 255, 255, 0.1); padding: 8px 15px; border-radius: 10px; }
+        .profile a { color: #ff6b6b; text-decoration: none; font-size: 14px; font-weight: 600; transition: color 0.3s ease; }
+        .profile a:hover { color: #4ecdc4; }
 
         /* Main Content */
-        .main-content { flex: 1; padding: 20px; overflow-y: auto; margin-left: 280px; background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(12px); }
+        .main-content { flex: 1; padding: 20px; overflow-y: auto; background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(12px); }
         .content-section { display: none; padding: 20px; background: rgba(255, 255, 255, 0.1); border-radius: 20px; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3); margin-bottom: 20px; }
         .content-section.active { display: block; }
         .content-section h2 { font-size: 24px; color: #ff6b6b; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1.5px; }
-        .content-section p { font-size: 16px; color: #e0e0e0; line-height: 1.6; }
 
         /* Tools Grid */
-        .tool-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 20px; }
+        .tool-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 15px; padding: 10px; }
         .tool-item { background: rgba(255, 255, 255, 0.15); padding: 15px; border-radius: 12px; text-align: center; transition: all 0.3s ease; border: 2px solid transparent; }
-        .tool-item:hover { transform: scale(1.08); box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4); border-color: #4ecdc4; }
-        .tool-item a { text-decoration: none; color: #fff; font-size: 16px; font-weight: 600; display: block; }
-        .tool-item img { width: 50px; margin-bottom: 10px; transition: transform 0.3s ease; }
+        .tool-item:hover { transform: scale(1.05); box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4); border-color: #4ecdc4; }
+        .tool-item a { text-decoration: none; color: #fff; font-size: 14px; font-weight: 600; display: block; }
+        .tool-item img { width: 40px; margin-bottom: 10px; transition: transform 0.3s ease; }
         .tool-item:hover img { transform: rotate(10deg); }
 
-        /* Profile Section */
-        .profile { position: absolute; top: 20px; right: 20px; background: rgba(255, 255, 255, 0.1); padding: 10px 20px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); }
-        .profile a { color: #ff6b6b; text-decoration: none; font-size: 16px; font-weight: 600; transition: color 0.3s ease; }
-        .profile a:hover { color: #4ecdc4; }
-
         /* Bottom Navigation */
-        .bottom-nav { display: flex; justify-content: space-around; background: linear-gradient(90deg, #ff6b6b, #4ecdc4); padding: 15px 0; position: fixed; bottom: 0; width: calc(100% - 280px); left: 280px; box-shadow: 0 -4px 25px rgba(0, 0, 0, 0.4); border-top: 1px solid rgba(255, 255, 255, 0.2); }
-        .nav-item { display: flex; flex-direction: column; align-items: center; color: #fff; font-size: 14px; cursor: pointer; padding: 8px; transition: all 0.3s ease; }
+        .bottom-nav { display: flex; justify-content: space-around; background: linear-gradient(90deg, #ff6b6b, #4ecdc4); padding: 10px 0; position: fixed; bottom: 0; width: 100%; box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.4); border-top: 1px solid rgba(255, 255, 255, 0.2); z-index: 10; }
+        .nav-item { display: flex; flex-direction: column; align-items: center; color: #fff; font-size: 12px; cursor: pointer; padding: 8px; transition: all 0.3s ease; }
         .nav-item:hover { color: #e0e0e0; transform: scale(1.1); }
-        .nav-item img { width: 30px; margin-bottom: 5px; filter: brightness(0) saturate(100%) invert(100%) sepia(0%) hue-rotate(0deg); }
+        .nav-item img { width: 25px; margin-bottom: 5px; filter: brightness(0) saturate(100%) invert(100%) sepia(0%) hue.DISABLED-rotate(0deg); }
 
-        /* Responsive */
+        /* Responsive Design */
+        @media (min-width: 769px) {
+            .app-container { flex-direction: row; }
+            .header { position: fixed; top: 0; width: 100%; }
+            .main-content { margin-top: 70px; padding: 30px; }
+            .tool-grid { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px; }
+            .tool-item { padding: 20px; }
+            .tool-item img { width: 50px; }
+            .tool-item a { font-size: 16px; }
+            .bottom-nav { width: calc(100% - 280px); left: 280px; }
+            .nav-item { font-size: 14px; }
+            .nav-item img { width: 30px; }
+        }
+
         @media (max-width: 768px) {
-            .sidebar { width: 100%; height: auto; position: relative; }
-            .main-content { margin-left: 0; }
-            .bottom-nav { width: 100%; left: 0; }
-            .profile { top: 80px; right: 10px; }
+            .header { flex-direction: column; align-items: flex-start; padding: 10px 15px; }
+            .profile { margin-top: 10px; }
+            .main-content { padding: 10px; margin-top: 80px; }
+            .tool-grid { grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 10px; }
+            .tool-item { padding: 10px; }
+            .tool-item img { width: 30px; }
+            .tool-item a { font-size: 12px; }
+            .bottom-nav { padding: 5px 0; }
+            .nav-item { font-size: 10px; padding: 5px; }
+            .nav-item img { width: 20px; }
         }
     </style>
 </head>
 <body>
     <div class="app-container">
-        <!-- Sidebar (Left Panel) -->
-        <div class="sidebar">
+        <!-- Header -->
+        <div class="header">
             <div class="logo-section">
                 <svg class="logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
                     <path d="M20 20 H80 V80 H20 Z" fill="url(#grad1)" stroke="#4ecdc4" stroke-width="4"/>
@@ -78,16 +88,15 @@
                 </svg>
                 <h1>ToolVerse</h1>
             </div>
+            <div class="profile">
+                <a href="#" onclick="showSection('profile')">Login</a>
+            </div>
         </div>
 
         <!-- Main Content -->
         <div class="main-content">
-            <div class="profile">
-                <a href="#" onclick="showSection('profile')">Login</a>
-            </div>
-
             <!-- Home Section -->
-            <div class="content-section" id="home">
+            <div class="content-section active" id="home">
                 <h2>Home</h2>
                 <p>Welcome to ToolVerse! Your ultimate toolkit awaits—explore and unleash your creativity.</p>
             </div>
