@@ -5,69 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ToolVerse - Dashboard</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-        body { background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460); min-height: 100vh; display: flex; color: #fff; overflow-x: hidden; }
-
-        /* Main Container */
-        .app-container { display: flex; flex-direction: column; width: 100%; height: 100vh; }
-
-        /* Header */
-        .header { display: flex; align-items: center; justify-content: space-between; background: linear-gradient(90deg, #ff6b6b, #4ecdc4); padding: 15px 20px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4); position: sticky; top: 0; z-index: 10; }
-        .logo-section { display: flex; align-items: center; }
-        .logo { width: 40px; height: 40px; margin-right: 10px; filter: drop-shadow(0 0 10px rgba(78, 205, 196, 0.6)); }
-        .header h1 { font-size: 22px; background: linear-gradient(90deg, #fff, #e0e0e0); -webkit-background-clip: text; color: transparent; font-weight: 700; }
-        .profile { background: rgba(255, 255, 255, 0.1); padding: 8px 15px; border-radius: 10px; }
-        .profile a { color: #ff6b6b; text-decoration: none; font-size: 14px; font-weight: 600; transition: color 0.3s ease; }
-        .profile a:hover { color: #4ecdc4; }
-
-        /* Main Content */
-        .main-content { flex: 1; padding: 20px; overflow-y: auto; background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(12px); }
-        .content-section { display: none; padding: 20px; background: rgba(255, 255, 255, 0.1); border-radius: 20px; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3); margin-bottom: 20px; }
-        .content-section.active { display: block; }
-        .content-section h2 { font-size: 24px; color: #ff6b6b; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1.5px; }
-
-        /* Tools Grid */
-        .tool-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 15px; padding: 10px; }
-        .tool-item { background: rgba(255, 255, 255, 0.15); padding: 15px; border-radius: 12px; text-align: center; transition: all 0.3s ease; border: 2px solid transparent; }
-        .tool-item:hover { transform: scale(1.05); box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4); border-color: #4ecdc4; }
-        .tool-item a { text-decoration: none; color: #fff; font-size: 14px; font-weight: 600; display: block; }
-        .tool-item img { width: 40px; margin-bottom: 10px; transition: transform 0.3s ease; }
-        .tool-item:hover img { transform: rotate(10deg); }
-
-        /* Bottom Navigation */
-        .bottom-nav { display: flex; justify-content: space-around; background: linear-gradient(90deg, #ff6b6b, #4ecdc4); padding: 10px 0; position: fixed; bottom: 0; width: 100%; box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.4); border-top: 1px solid rgba(255, 255, 255, 0.2); z-index: 10; }
-        .nav-item { display: flex; flex-direction: column; align-items: center; color: #fff; font-size: 12px; cursor: pointer; padding: 8px; transition: all 0.3s ease; }
-        .nav-item:hover { color: #e0e0e0; transform: scale(1.1); }
-        .nav-item img { width: 25px; margin-bottom: 5px; filter: brightness(0) saturate(100%) invert(100%) sepia(0%) hue.DISABLED-rotate(0deg); }
-
-        /* Responsive Design */
-        @media (min-width: 769px) {
-            .app-container { flex-direction: row; }
-            .header { position: fixed; top: 0; width: 100%; }
-            .main-content { margin-top: 70px; padding: 30px; }
-            .tool-grid { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px; }
-            .tool-item { padding: 20px; }
-            .tool-item img { width: 50px; }
-            .tool-item a { font-size: 16px; }
-            .bottom-nav { width: calc(100% - 280px); left: 280px; }
-            .nav-item { font-size: 14px; }
-            .nav-item img { width: 30px; }
-        }
-
-        @media (max-width: 768px) {
-            .header { flex-direction: column; align-items: flex-start; padding: 10px 15px; }
-            .profile { margin-top: 10px; }
-            .main-content { padding: 10px; margin-top: 80px; }
-            .tool-grid { grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 10px; }
-            .tool-item { padding: 10px; }
-            .tool-item img { width: 30px; }
-            .tool-item a { font-size: 12px; }
-            .bottom-nav { padding: 5px 0; }
-            .nav-item { font-size: 10px; padding: 5px; }
-            .nav-item img { width: 20px; }
-        }
-    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="app-container">
@@ -101,49 +40,77 @@
                 <p>Welcome to ToolVerse! Your ultimate toolkit awaits—explore and unleash your creativity.</p>
             </div>
 
-            <!-- Tools Section -->
+            <!-- Tools Section (Upgraded) -->
             <div class="content-section" id="tools">
                 <h2>Tools</h2>
                 <div class="tool-grid">
+                    <!-- Static Tools -->
                     <div class="tool-item">
-                        <img src="https://img.icons8.com/color/50/000000/image.png" alt="Image Compressor Icon">
+                        <i class="fas fa-compress-arrows-alt"></i>
                         <a href="tools/image_compressor.html">Image Compressor</a>
                     </div>
                     <div class="tool-item">
-                        <img src="https://img.icons8.com/color/50/000000/pdf.png" alt="PDF to JPG Icon">
+                        <i class="fas fa-file-pdf"></i>
                         <a href="tools/pdf_to_jpg.html">PDF to JPG</a>
                     </div>
-                    <div class="tool-item">
-                        <img src="https://img.icons8.com/color/50/000000/edit.png" alt="Text Editor Icon">
-                        <a href="tools/text_editor.html">Text Editor</a>
+                    <!-- Functional Tools -->
+                    <div class="tool-item interactive">
+                        <i class="fas fa-pen"></i>
+                        <span>Text Editor</span>
+                        <div class="tool-content">
+                            <textarea id="textEditor" placeholder="Type your text here..."></textarea>
+                            <button onclick="saveText()">Save</button>
+                        </div>
                     </div>
-                    <div class="tool-item">
-                        <img src="https://img.icons8.com/color/50/000000/merge-files.png" alt="File Merger Icon">
-                        <a href="tools/file_merger.html">File Merger</a>
+                    <div class="tool-item interactive">
+                        <i class="fas fa-file"></i>
+                        <span>File Converter</span>
+                        <div class="tool-content">
+                            <input type="file" id="fileInput" accept=".txt,.pdf">
+                            <button onclick="convertFile()">Convert</button>
+                            <p id="convertResult">Select a file</p>
+                        </div>
                     </div>
-                    <div class="tool-item">
-                        <img src="https://img.icons8.com/color/50/000000/resize.png" alt="Image Resizer Icon">
-                        <a href="tools/image_resizer.html">Image Resizer</a>
-                    </div>
-                    <div class="tool-item">
-                        <img src="https://img.icons8.com/color/50/000000/qr-code.png" alt="QR Code Generator Icon">
-                        <a href="tools/qr_code_generator.html">QR Code Generator</a>
-                    </div>
-                    <div class="tool-item">
-                        <img src="https://img.icons8.com/color/50/000000/color-dropper.png" alt="Color Picker Icon">
-                        <a href="tools/color_picker.html">Color Picker</a>
-                    </div>
-                    <div class="tool-item">
-                        <img src="https://img.icons8.com/color/50/000000/microphone.png" alt="Voice to Text Icon">
-                        <a href="tools/voice_to_text.html">Voice to Text</a>
+                    <div class="tool-item interactive">
+                        <i class="fas fa-tasks"></i>
+                        <span>Task Manager</span>
+                        <div class="tool-content">
+                            <input type="text" id="taskInput" placeholder="Add a task...">
+                            <button onclick="addTask()">Add</button>
+                            <ul id="taskList"></ul>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Settings Section -->
+            <!-- Services Section -->
+            <div class="content-section" id="services">
+                <h2>Services</h2>
+                <ul>
+                    <li>Powerful Productivity Tools</li>
+                    <li>Customizable User Experience</li>
+                    <li>Cloud-Based Solutions</li>
+                </ul>
+            </div>
+
+            <!-- Contact Section -->
+            <div class="content-section" id="contact">
+                <h2>Contact</h2>
+                <p>Email: support@toolsverse.com</p>
+                <p>Phone: +91-98765-43210</p>
+                <p>Address: Tech Hub, India</p>
+            </div>
+
+            <!-- Settings Section (with Storage Permission) -->
             <div class="content-section" id="settings">
                 <h2>Settings</h2>
-                <p>Customize your ToolVerse experience here. More options coming soon!</p>
+                <div class="settings-option">
+                    <h3><i class="fas fa-database"></i> Storage Permission</h3>
+                    <p>Allow us to save your preferences?</p>
+                    <button onclick="requestStoragePermission()">Allow</button>
+                    <button onclick="denyStoragePermission()">Deny</button>
+                    <p id="storageStatus">Status: Not Granted</p>
+                </div>
             </div>
 
             <!-- Profile Section -->
@@ -163,6 +130,14 @@
                 <img src="https://img.icons8.com/ios-filled/50/ffffff/toolbox.png" alt="Tools Icon">
                 <p>Tools</p>
             </div>
+            <div class="nav-item" onclick="showSection('services')">
+                <img src="https://img.icons8.com/ios-filled/50/ffffff/concierge-bell.png" alt="Services Icon">
+                <p>Services</p>
+            </div>
+            <div class="nav-item" onclick="showSection('contact')">
+                <img src="https://img.icons8.com/ios-filled/50/ffffff/address-book.png" alt="Contact Icon">
+                <p>Contact</p>
+            </div>
             <div class="nav-item" onclick="showSection('settings')">
                 <img src="https://img.icons8.com/ios-filled/50/ffffff/settings.png" alt="Settings Icon">
                 <p>Settings</p>
@@ -174,17 +149,6 @@
         </div>
     </div>
 
-    <script>
-        // Show Section
-        function showSection(sectionId) {
-            document.querySelectorAll('.content-section').forEach(section => {
-                section.classList.remove('active');
-            });
-            document.getElementById(sectionId).classList.add('active');
-        }
-
-        // Default to Home
-        showSection('home');
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
