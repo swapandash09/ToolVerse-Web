@@ -5,13 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#ff477e">
     <meta name="description" content="ToolVerse - Your Professional Toolkit for Productivity">
-    <title>ToolVerse - Professional Dashboard</title>
+    <title>ToolVerse - Dashboard</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="app-container" data-theme="light">
+        <!-- Sidebar (Desktop) / Bottom Nav (Mobile) -->
         <aside class="sidebar">
             <div class="logo-section">
                 <svg class="logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
@@ -29,19 +30,23 @@
                 <h1>ToolVerse</h1>
             </div>
             <nav class="nav-menu">
-                <div class="nav-item active" data-section="home"><i class="fas fa-home"></i> Dashboard</div>
-                <div class="nav-item" data-section="tools"><i class="fas fa-toolbox"></i> Tools</div>
-                <div class="nav-item" data-section="services"><i class="fas fa-concierge-bell"></i> Services</div>
-                <div class="nav-item" data-section="contact"><i class="fas fa-address-book"></i> Contact</div>
-                <div class="nav-item" data-section="settings"><i class="fas fa-cog"></i> Settings</div>
-                <div class="nav-item" data-section="profile"><i class="fas fa-user"></i> Profile</div>
+                <div class="nav-item active" data-section="home"><i class="fas fa-home"></i> <span>Dashboard</span></div>
+                <div class="nav-item" data-section="tools"><i class="fas fa-toolbox"></i> <span>Tools</span></div>
+                <div class="nav-item" data-section="services"><i class="fas fa-concierge-bell"></i> <span>Services</span></div>
+                <div class="nav-item" data-section="contact"><i class="fas fa-address-book"></i> <span>Contact</span></div>
+                <div class="nav-item" data-section="settings"><i class="fas fa-cog"></i> <span>Settings</span></div>
+                <div class="nav-item" data-section="profile"><i class="fas fa-user"></i> <span>Profile</span></div>
             </nav>
         </aside>
 
+        <!-- Header -->
         <header class="header">
-            <div class="search-bar">
-                <i class="fas fa-search"></i>
-                <input type="text" id="toolSearch" placeholder="Search Tools..." aria-label="Search Tools">
+            <div class="header-left">
+                <button class="menu-toggle"><i class="fas fa-bars"></i></button>
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="toolSearch" placeholder="Search Tools..." aria-label="Search Tools">
+                </div>
             </div>
             <div class="user-controls">
                 <button class="theme-toggle" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button>
@@ -52,9 +57,10 @@
             </div>
         </header>
 
+        <!-- Main Content -->
         <main class="main-content">
             <section class="content-section active" id="home">
-                <h2>Welcome to ToolVerse</h2>
+                <h2><i class="fas fa-home"></i> Welcome to ToolVerse</h2>
                 <div class="dashboard-stats">
                     <div class="stat-card">
                         <i class="fas fa-tools"></i>
@@ -75,7 +81,7 @@
             </section>
 
             <section class="content-section" id="tools">
-                <h2>Toolbox</h2>
+                <h2><i class="fas fa-toolbox"></i> Toolbox</h2>
                 <div class="tool-grid">
                     <div class="tool-card">
                         <i class="fas fa-compress-arrows-alt"></i>
@@ -116,7 +122,7 @@
             </section>
 
             <section class="content-section" id="services">
-                <h2>Our Services</h2>
+                <h2><i class="fas fa-concierge-bell"></i> Our Services</h2>
                 <div class="services-grid">
                     <div class="service-card">
                         <i class="fas fa-rocket"></i>
@@ -137,7 +143,7 @@
             </section>
 
             <section class="content-section" id="contact">
-                <h2>Contact Us</h2>
+                <h2><i class="fas fa-address-book"></i> Contact Us</h2>
                 <form class="contact-form">
                     <input type="email" id="contactEmail" placeholder="Your Email" required aria-label="Email">
                     <textarea id="contactMessage" placeholder="Your Message" required aria-label="Message"></textarea>
@@ -151,7 +157,7 @@
             </section>
 
             <section class="content-section" id="settings">
-                <h2>Settings</h2>
+                <h2><i class="fas fa-cog"></i> Settings</h2>
                 <div class="settings-card">
                     <h3><i class="fas fa-database"></i> Storage Permission</h3>
                     <p>Allow ToolVerse to save your data?</p>
@@ -164,12 +170,12 @@
             </section>
 
             <section class="content-section" id="profile">
-                <h2>Your Profile</h2>
+                <h2><i class="fas fa-user"></i> Your Profile</h2>
                 <div class="profile-card">
                     <img src="https://api.dicebear.com/7.x/identicon/svg?seed=user" alt="User Avatar" class="profile-avatar">
                     <p><strong>Name:</strong> [Your Name]</p>
                     <p><strong>Email:</strong> user@example.com</p>
-                    <p><strong>Joined:</strong> February 28, 2025</p>
+                    <p><strong>Joined:</strong> March 12, 2025</p>
                     <a href="#" class="login-link">Login to Customize</a>
                 </div>
             </section>
