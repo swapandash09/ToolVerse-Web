@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToolVerse - Welcome</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ff477e;
+            --secondary: #00ddeb;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+        body {
+            background: linear-gradient(135deg, #1e1e2f, #2d2d4a);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        .intro-container {
+            text-align: center;
+            color: white;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        .logo {
+            width: 120px;
+            height: 120px;
+            margin-bottom: 2rem;
+            animation: cosmicPulse 4s infinite ease-in-out;
+            filter: drop-shadow(0 0 20px var(--secondary));
+        }
+        h1 {
+            font-size: 3rem;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            color: transparent;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+        p {
+            font-size: 1.2rem;
+            margin-top: 1rem;
+            opacity: 0.8;
+        }
+        .loader {
+            width: 200px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 2px;
+            margin: 2rem auto 0;
+            overflow: hidden;
+        }
+        .loader-bar {
+            width: 0;
+            height: 100%;
+            background: var(--secondary);
+            animation: load 3s linear forwards;
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes cosmicPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        @keyframes load {
+            0% { width: 0; }
+            100% { width: 100%; }
+        }
+        @media (max-width: 768px) {
+            .logo { width: 100px; height: 100px; }
+            h1 { font-size: 2rem; }
+            p { font-size: 1rem; }
+            .loader { width: 150px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="intro-container">
+        <svg class="logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 20 H80 V80 H20 Z" fill="url(#grad1)" stroke="#00ddeb" stroke-width="4"/>
+            <rect x="40" y="10" width="20" height="20" fill="#ff477e" rx="5"/>
+            <circle cx="50" cy="50" r="15" fill="none" stroke="#ffffff" stroke-width="3"/>
+            <path d="M45 45 L55 55 M55 45 L45 55" stroke="#ffffff" stroke-width="3"/>
+            <defs>
+                <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#ff477e;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#00ddeb;stop-opacity:1" />
+                </linearGradient>
+            </defs>
+        </svg>
+        <h1>ToolVerse</h1>
+        <p>Your Professional Productivity Suite</p>
+        <div class="loader">
+            <div class="loader-bar"></div>
+        </div>
+    </div>
+
+    <script>
+        setTimeout(() => {
+            window.location.href = 'index.html';
+        }, 3000);
+    </script>
+</body>
+</html>
