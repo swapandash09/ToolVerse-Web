@@ -14,13 +14,13 @@
         <div class="upload-section">
             <input type="file" id="pdfInput" accept=".pdf">
             <div class="preview-container">
-                <img id="previewImage" src="" alt="Converted JPG Preview" style="display: none;">
                 <p id="noPreview">No PDF selected</p>
+                <img id="previewImage" src="" alt="Converted JPG Preview" style="display: none;">
             </div>
         </div>
         <div class="controls">
             <button onclick="convertPDF()">Convert</button>
-            <button id="downloadBtn" onclick="downloadImage()" disabled>Download JPG</button>
+            <button id="downloadBtn" onclick="downloadJPG()" disabled>Download</button>
         </div>
         <p id="result">Upload a PDF to convert</p>
         <a href="../index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Dashboard</a>
