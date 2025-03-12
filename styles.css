@@ -293,21 +293,47 @@ h2 {
 }
 
 .tool-card i {
-    font-size: 2.5rem; /* Larger size */
+    font-size: 2.8rem; /* Even larger size for more impact */
     color: white;
-    background: linear-gradient(135deg, var(--secondary), var(--accent)); /* Gradient background */
-    padding: 1.2rem;
+    background: linear-gradient(145deg, var(--secondary), var(--accent)); /* Vibrant gradient */
+    padding: 1.3rem;
     border-radius: 50%;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 
+        5px 5px 10px rgba(0, 0, 0, 0.15), /* 3D shadow effect */
+        -5px -5px 10px rgba(255, 255, 255, 0.5); /* Neumorphic highlight */
     transition: all 0.3s ease;
     position: relative;
     z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    animation: subtlePulse 3s infinite ease-in-out; /* Subtle pulsing animation */
+}
+
+/* Add a pseudo-element for a glowing overlay */
+.tool-card i::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 50%;
 }
 
 .tool-card:hover i {
-    transform: scale(1.15);
-    background: linear-gradient(135deg, var(--highlight), var(--primary)); /* Colorful hover */
-    box-shadow: 0 6px 15px rgba(255, 214, 10, 0.3);
+    transform: scale(1.2) rotate(10deg); /* Slight rotation for dynamic effect */
+    background: linear-gradient(145deg, var(--highlight), var(--primary));
+    box-shadow: 
+        8px 8px 15px rgba(0, 0, 0, 0.2),
+        -8px -8px 15px rgba(255, 255, 255, 0.7);
+}
+
+.tool-card:hover i::before {
+    opacity: 1; /* Glow effect on hover */
 }
 
 .tool-card a {
@@ -322,12 +348,6 @@ h2 {
 
 .tool-card a:hover {
     color: var(--secondary);
-}
-
-.tool-card p {
-    font-size: 0.9rem;
-    color: #64748b;
-    margin-top: 0.5rem;
 }
 
 /* Click Effect */
@@ -359,6 +379,12 @@ h2 {
 .tool-card a:active + i {
     transform: scale(1.2);
     transition: transform 0.1s ease;
+}
+
+.tool-card p {
+    font-size: 0.9rem;
+    color: #64748b;
+    margin-top: 0.5rem;
 }
 
 .services-grid {
@@ -495,6 +521,13 @@ h2 {
     margin-bottom: 1rem;
 }
 
+/* Animations */
+@keyframes subtlePulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
 @keyframes fadeIn {
     0% { opacity: 0; transform: translateY(20px); }
     100% { opacity: 1; transform: translateY(0); }
@@ -553,4 +586,4 @@ h2 {
         padding: 0.3rem 0.8rem;
         font-size: 1rem;
     }
-    }
+        }
