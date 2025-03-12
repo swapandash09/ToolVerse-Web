@@ -3,19 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ToolVerse - Dashboard</title>
+    <meta name="theme-color" content="#ff6b6b">
+    <title>ToolVerse - NextGen Dashboard</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="app-container">
-        <!-- Header -->
+    <div class="app-container" data-theme="light">
+        <!-- Header with Theme Toggle -->
         <div class="header">
             <div class="logo-section">
-                <svg class="logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <svg class="logo animate-spin-slow" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
                     <path d="M20 20 H80 V80 H20 Z" fill="url(#grad1)" stroke="#4ecdc4" stroke-width="4"/>
-                    <rect x="40" y="10" width="20" height="20" fill="#ff6b6b" rx="5"/>
+                    <rect x="40" y="10" width="20" height="20" fill="#ff6b6b" rx="5" class="animate-pulse"/>
                     <circle cx="50" cy="50" r="15" fill="none" stroke="#ffffff" stroke-width="3"/>
                     <path d="M45 45 L55 55 M55 45 L45 55" stroke="#ffffff" stroke-width="3"/>
                     <defs>
@@ -28,56 +29,78 @@
                 <h1>ToolVerse</h1>
             </div>
             <div class="profile">
-                <a href="#" onclick="showSection('profile')">Login</a>
+                <button class="theme-toggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <a href="#" onclick="showSection('profile')" class="avatar-link">
+                    <img src="https://api.dicebear.com/7.x/identicon/svg?seed=user" alt="User Avatar" class="avatar">
+                    Login
+                </a>
             </div>
         </div>
 
-        <!-- Main Content -->
+        <!-- Main Content with Enhanced Features -->
         <div class="main-content">
             <!-- Home Section -->
             <div class="content-section active" id="home">
                 <h2>Home</h2>
-                <p>Welcome to ToolVerse! Your ultimate toolkit awaits—explore and unleash your creativity.</p>
+                <div class="hero-card">
+                    <p>Welcome to ToolVerse 2.0!</p>
+                    <p class="subtitle">Your ultimate AI-enhanced toolkit awaits</p>
+                </div>
             </div>
 
-            <!-- Tools Section (Upgraded) -->
+            <!-- Upgraded Tools Section -->
             <div class="content-section" id="tools">
                 <h2>Tools</h2>
                 <div class="tool-grid">
-                    <!-- Static Tools -->
-                    <div class="tool-item">
+                    <div class="tool-item" data-tool="image-compressor">
                         <i class="fas fa-compress-arrows-alt"></i>
                         <a href="tools/image_compressor.html">Image Compressor</a>
+                        <p class="tool-desc">AI-powered optimization</p>
                     </div>
-                    <div class="tool-item">
+                    <div class="tool-item" data-tool="pdf-to-jpg">
                         <i class="fas fa-file-pdf"></i>
                         <a href="tools/pdf_to_jpg.html">PDF to JPG</a>
+                        <p class="tool-desc">OCR-enabled conversion</p>
                     </div>
-                    <!-- Functional Tools -->
-                    <div class="tool-item interactive">
+                    <div class="tool-item interactive" data-tool="text-editor">
                         <i class="fas fa-pen"></i>
                         <span>Text Editor</span>
                         <div class="tool-content">
-                            <textarea id="textEditor" placeholder="Type your text here..."></textarea>
-                            <button onclick="saveText()">Save</button>
+                            <textarea id="textEditor" placeholder="Type your text here..." spellcheck="true"></textarea>
+                            <div class="tool-actions">
+                                <button onclick="saveText()">Save</button>
+                                <button onclick="formatText()">Format</button>
+                            </div>
                         </div>
                     </div>
-                    <div class="tool-item interactive">
+                    <div class="tool-item interactive" data-tool="file-converter">
                         <i class="fas fa-file"></i>
                         <span>File Converter</span>
                         <div class="tool-content">
-                            <input type="file" id="fileInput" accept=".txt,.pdf">
+                            <input type="file" id="fileInput" accept=".txt,.pdf" multiple>
                             <button onclick="convertFile()">Convert</button>
                             <p id="convertResult">Select a file</p>
                         </div>
                     </div>
-                    <div class="tool-item interactive">
+                    <div class="tool-item interactive" data-tool="task-manager">
                         <i class="fas fa-tasks"></i>
                         <span>Task Manager</span>
                         <div class="tool-content">
                             <input type="text" id="taskInput" placeholder="Add a task...">
                             <button onclick="addTask()">Add</button>
-                            <ul id="taskList"></ul>
+                            <ul id="taskList" class="task-list"></ul>
+                        </div>
+                    </div>
+                    <!-- New AI Tool -->
+                    <div class="tool-item interactive" data-tool="ai-assistant">
+                        <i class="fas fa-robot"></i>
+                        <span>AI Assistant</span>
+                        <div class="tool-content">
+                            <input type="text" id="aiInput" placeholder="Ask AI anything...">
+                            <button onclick="askAI()">Ask</button>
+                            <p id="aiResult">Waiting for query...</p>
                         </div>
                     </div>
                 </div>
@@ -86,22 +109,29 @@
             <!-- Services Section -->
             <div class="content-section" id="services">
                 <h2>Services</h2>
-                <ul>
-                    <li>Powerful Productivity Tools</li>
-                    <li>Customizable User Experience</li>
-                    <li>Cloud-Based Solutions</li>
+                <ul class="services-list">
+                    <li><i class="fas fa-rocket"></i> Powerful Productivity Tools</li>
+                    <li><i class="fas fa-cloud"></i> Customizable User Experience</li>
+                    <li><i class="fas fa-server"></i> Cloud-Based Solutions</li>
                 </ul>
             </div>
 
             <!-- Contact Section -->
             <div class="content-section" id="contact">
                 <h2>Contact</h2>
-                <p>Email: support@toolsverse.com</p>
-                <p>Phone: +91-98765-43210</p>
-                <p>Address: Tech Hub, India</p>
+                <form class="contact-form">
+                    <input type="email" placeholder="Your Email" required>
+                    <textarea placeholder="Your Message" required></textarea>
+                    <button type="submit">Send</button>
+                </form>
+                <div class="contact-info">
+                    <p><i class="fas fa-envelope"></i> Email: support@toolsverse.com</p>
+                    <p><i class="fas fa-phone"></i> Phone: +91-98765-43210</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Address: Tech Hub, India</p>
+                </div>
             </div>
 
-            <!-- Settings Section (with Storage Permission) -->
+            <!-- Settings Section -->
             <div class="content-section" id="settings">
                 <h2>Settings</h2>
                 <div class="settings-option">
@@ -111,39 +141,51 @@
                     <button onclick="denyStoragePermission()">Deny</button>
                     <p id="storageStatus">Status: Not Granted</p>
                 </div>
+                <div class="settings-option">
+                    <h3><i class="fas fa-bell"></i> Notifications</h3>
+                    <label>
+                        <input type="checkbox" id="notificationsToggle"> Enable Notifications
+                    </label>
+                </div>
             </div>
 
             <!-- Profile Section -->
             <div class="content-section" id="profile">
                 <h2>Profile</h2>
-                <p>Name: [Your Name]<br>Email: user@example.com<br>Joined: February 28, 2025<br><a href="#" style="color: #ff6b6b;">Login</a> to access personalized features.</p>
+                <div class="profile-card">
+                    <img src="https://api.dicebear.com/7.x/identicon/svg?seed=user" alt="User Avatar" class="profile-avatar">
+                    <p>Name: [Your Name]</p>
+                    <p>Email: user@example.com</p>
+                    <p>Joined: February 28, 2025</p>
+                    <a href="#" style="color: #ff6b6b;">Login</a>
+                </div>
             </div>
         </div>
 
-        <!-- Bottom Navigation -->
+        <!-- Bottom Navigation with Font Awesome -->
         <div class="bottom-nav">
             <div class="nav-item" onclick="showSection('home')">
-                <img src="https://img.icons8.com/ios-filled/50/ffffff/home.png" alt="Home Icon">
+                <i class="fas fa-home"></i>
                 <p>Home</p>
             </div>
             <div class="nav-item" onclick="showSection('tools')">
-                <img src="https://img.icons8.com/ios-filled/50/ffffff/toolbox.png" alt="Tools Icon">
+                <i class="fas fa-toolbox"></i>
                 <p>Tools</p>
             </div>
             <div class="nav-item" onclick="showSection('services')">
-                <img src="https://img.icons8.com/ios-filled/50/ffffff/concierge-bell.png" alt="Services Icon">
+                <i class="fas fa-concierge-bell"></i>
                 <p>Services</p>
             </div>
             <div class="nav-item" onclick="showSection('contact')">
-                <img src="https://img.icons8.com/ios-filled/50/ffffff/address-book.png" alt="Contact Icon">
+                <i class="fas fa-address-book"></i>
                 <p>Contact</p>
             </div>
             <div class="nav-item" onclick="showSection('settings')">
-                <img src="https://img.icons8.com/ios-filled/50/ffffff/settings.png" alt="Settings Icon">
+                <i class="fas fa-cog"></i>
                 <p>Settings</p>
             </div>
             <div class="nav-item" onclick="showSection('profile')">
-                <img src="https://img.icons8.com/ios-filled/50/ffffff/user.png" alt="Profile Icon">
+                <i class="fas fa-user"></i>
                 <p>Profile</p>
             </div>
         </div>
