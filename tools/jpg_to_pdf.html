@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JPG to PDF - ToolVerse</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="common.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <div class="tool-container">
+        <h2><i class="fas fa-file-image"></i> JPG to PDF</h2>
+        <div class="upload-section">
+            <input type="file" id="imageInput" accept="image/*" multiple>
+            <div class="preview-container">
+                <p id="noPreview">No images selected</p>
+                <div id="previewImages" class="preview-output"></div>
+            </div>
+        </div>
+        <div class="controls">
+            <button onclick="convertToPDF()">Convert to PDF</button>
+            <button id="downloadBtn" onclick="downloadPDF()" disabled>Download</button>
+        </div>
+        <p id="result">Upload images to convert</p>
+        <a href="../index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Dashboard</a>
+    </div>
+    <script src="jpg_to_pdf.js"></script>
+</body>
+</html>
