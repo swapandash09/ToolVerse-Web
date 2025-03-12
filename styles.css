@@ -283,6 +283,7 @@ h2 {
     transition: all 0.3s ease;
     border-left: 4px solid var(--highlight);
     overflow: hidden;
+    position: relative;
 }
 
 .tool-card:hover {
@@ -292,18 +293,21 @@ h2 {
 }
 
 .tool-card i {
-    font-size: 2.2rem;
-    color: var(--secondary);
-    background: rgba(0, 180, 216, 0.1);
-    padding: 1rem;
+    font-size: 2.5rem; /* Larger size */
+    color: white;
+    background: linear-gradient(135deg, var(--secondary), var(--accent)); /* Gradient background */
+    padding: 1.2rem;
     border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
 }
 
 .tool-card:hover i {
-    transform: scale(1.1);
-    background: rgba(255, 214, 10, 0.2);
-    color: var(--highlight);
+    transform: scale(1.15);
+    background: linear-gradient(135deg, var(--highlight), var(--primary)); /* Colorful hover */
+    box-shadow: 0 6px 15px rgba(255, 214, 10, 0.3);
 }
 
 .tool-card a {
@@ -324,6 +328,37 @@ h2 {
     font-size: 0.9rem;
     color: #64748b;
     margin-top: 0.5rem;
+}
+
+/* Click Effect */
+.tool-card a {
+    position: relative;
+    overflow: hidden;
+}
+
+.tool-card a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    background: rgba(255, 214, 10, 0.2);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.4s ease, height 0.4s ease;
+    z-index: 0;
+}
+
+.tool-card a:active::after {
+    width: 200px;
+    height: 200px;
+    transition: width 0.4s ease, height 0.4s ease;
+}
+
+.tool-card a:active + i {
+    transform: scale(1.2);
+    transition: transform 0.1s ease;
 }
 
 .services-grid {
