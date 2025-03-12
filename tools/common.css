@@ -39,7 +39,7 @@ h2 {
     gap: 0.5rem;
 }
 
-.upload-section {
+.upload-section, .input-section {
     margin-bottom: 1.5rem;
 }
 
@@ -65,9 +65,10 @@ textarea {
     display: flex;
     justify-content: center;
     align-items: center;
+    background: rgba(245, 247, 250, 0.5);
 }
 
-#previewImage {
+#previewImage, .preview-output {
     max-width: 100%;
     max-height: 300px;
     border-radius: 10px;
@@ -79,18 +80,23 @@ textarea {
 
 .controls {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     gap: 1rem;
     margin-bottom: 1.5rem;
+    justify-content: center;
 }
 
 label {
     font-weight: 600;
     color: var(--text-light);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 input[type="range"] {
     width: 100%;
+    max-width: 300px;
     accent-color: var(--secondary);
 }
 
@@ -113,6 +119,28 @@ button:disabled {
     background: #ccc;
     cursor: not-allowed;
     transform: none;
+}
+
+.output-section {
+    margin-top: 1.5rem;
+}
+
+.output-section ul {
+    list-style: none;
+    text-align: left;
+    max-height: 200px;
+    overflow-y: auto;
+    padding: 0.5rem;
+    border-radius: 10px;
+    background: rgba(245, 247, 250, 0.5);
+}
+
+.output-section ul li {
+    padding: 0.5rem;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 p {
@@ -146,6 +174,7 @@ p {
         min-height: 150px;
     }
     .controls {
+        flex-direction: column;
         gap: 0.8rem;
     }
 }
