@@ -1,15 +1,15 @@
 :root {
-    --primary: #ff2e63; /* Deeper Pink */
-    --secondary: #00b4d8; /* Ocean Blue */
-    --accent: #7b2cbf; /* Royal Purple */
+    --primary: #ff2e63; /* Vibrant Pink */
+    --secondary: #00b4d8; /* Bright Blue */
+    --accent: #7b2cbf; /* Rich Purple */
     --highlight: #ffd60a; /* Golden Yellow */
-    --bg-light: #f8fafc; /* Clean Light */
-    --bg-dark: #1e293b; /* Slate Dark */
-    --bg-cosmic: #0f172a; /* Cosmic Slate */
+    --bg-light: #f8fafc; /* Soft White */
+    --bg-dark: #1e293b; /* Deep Slate */
+    --bg-cosmic: #0f172a; /* Cosmic Dark */
     --text-light: #1e293b;
     --text-dark: #e2e8f0;
-    --shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-    --border-radius: 12px;
+    --shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    --border-radius: 15px;
 }
 
 * {
@@ -22,9 +22,9 @@
 body {
     background: var(--bg-light);
     color: var(--text-light);
-    min-height: 100vh;
+    line-height: 1.6;
     overflow-x: hidden;
-    transition: background 0.5s ease, color 0.5s ease;
+    transition: all 0.3s ease;
 }
 
 [data-theme="dark"] {
@@ -44,7 +44,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle, rgba(123, 44, 191, 0.15), transparent);
+    background: radial-gradient(circle at 20% 30%, rgba(123, 44, 191, 0.1), transparent 70%);
     z-index: -1;
     pointer-events: none;
 }
@@ -56,7 +56,7 @@ body {
 }
 
 .top-header {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(248, 250, 252, 0.9));
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
     padding: 1.5rem 2rem;
     display: flex;
     justify-content: space-between;
@@ -67,7 +67,7 @@ body {
     left: 0;
     right: 0;
     z-index: 1000;
-    backdrop-filter: blur(10px);
+    color: white;
 }
 
 .logo-section {
@@ -77,30 +77,30 @@ body {
 }
 
 .logo {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     transition: transform 0.3s ease;
 }
 
 .logo:hover {
-    transform: rotate(360deg);
+    transform: rotate(360deg) scale(1.1);
 }
 
 .top-header h1 {
     font-size: 1.8rem;
     font-weight: 700;
-    color: var(--primary);
 }
 
 .top-nav {
     display: flex;
-    gap: 2rem;
+    gap: 1.5rem;
+    align-items: center;
 }
 
 .nav-item {
     font-size: 1.1rem;
-    font-weight: 600;
-    color: var(--text-light);
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.9);
     cursor: pointer;
     padding: 0.5rem 1rem;
     border-radius: 8px;
@@ -109,35 +109,37 @@ body {
 
 .nav-item:hover,
 .nav-item.active {
-    background: var(--secondary);
+    background: rgba(255, 255, 255, 0.2);
     color: white;
-    box-shadow: 0 4px 15px rgba(0, 180, 216, 0.3);
+    transform: translateY(-2px);
 }
 
 .header-controls {
     display: flex;
     align-items: center;
-    gap: 1.5rem;
+    gap: 1rem;
 }
 
 .search-bar {
     position: relative;
+    margin-right: 1rem;
 }
 
 .search-bar input {
-    padding: 0.8rem 1rem 0.8rem 2.5rem;
-    border: 2px solid var(--secondary);
-    border-radius: 10px;
-    background: rgba(255, 255, 255, 0.9);
+    padding: 0.7rem 1rem 0.7rem 2.5rem;
+    border: none;
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
     font-size: 1rem;
-    width: 250px;
+    width: 200px;
     transition: all 0.3s ease;
 }
 
 .search-bar input:focus {
-    border-color: var(--highlight);
-    box-shadow: 0 0 10px rgba(255, 214, 10, 0.5);
-    width: 300px;
+    background: rgba(255, 255, 255, 0.3);
+    width: 250px;
+    outline: none;
 }
 
 .search-bar i {
@@ -145,13 +147,13 @@ body {
     left: 0.8rem;
     top: 50%;
     transform: translateY(-50%);
-    color: var(--accent);
+    color: rgba(255, 255, 255, 0.7);
 }
 
 .theme-toggle {
-    background: var(--accent);
+    background: rgba(255, 255, 255, 0.1);
     border: none;
-    padding: 0.7rem;
+    padding: 0.6rem;
     border-radius: 50%;
     color: white;
     cursor: pointer;
@@ -159,30 +161,31 @@ body {
 }
 
 .theme-toggle:hover {
-    background: var(--highlight);
-    transform: scale(1.1);
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.2);
 }
 
 .profile {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
+    gap: 0.5rem;
 }
 
 .avatar {
-    width: 40px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
     border-radius: 50%;
-    border: 2px solid var(--primary);
+    border: 2px solid rgba(255, 255, 255, 0.5);
 }
 
 .username {
-    font-weight: 600;
-    font-size: 1rem;
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.9);
 }
 
 .main-content {
-    padding: 8rem 2rem 2rem;
+    padding: 6rem 2rem 2rem;
     flex: 1;
 }
 
@@ -197,13 +200,17 @@ body {
 
 .hero {
     text-align: center;
-    margin-bottom: 4rem;
+    padding: 2rem 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), var(--bg-light));
+    border-radius: var(--border-radius);
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow);
 }
 
 h2 {
     font-size: 2.5rem;
     color: var(--primary);
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
 }
 
 .hero p {
@@ -214,79 +221,98 @@ h2 {
 
 .dashboard-stats {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    margin-bottom: 3rem;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
 }
 
 .stat-card {
-    background: rgba(255, 255, 255, 0.9);
-    padding: 2rem;
+    background: white;
+    padding: 1.5rem;
     border-radius: var(--border-radius);
     text-align: center;
     box-shadow: var(--shadow);
     transition: all 0.3s ease;
+    border-left: 4px solid var(--secondary);
 }
 
 .stat-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 
 .stat-card i {
-    font-size: 2.5rem;
-    color: var(--secondary);
-    margin-bottom: 1rem;
+    font-size: 2rem;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
 }
 
 .stat-card h3 {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     color: var(--primary);
+    margin-bottom: 0.25rem;
+}
+
+.stat-card p {
+    font-size: 0.9rem;
+    color: #64748b;
+}
+
+.latest-tools {
+    margin-top: 2rem;
+}
+
+.latest-tools h3 {
+    font-size: 1.8rem;
+    color: var(--accent);
+    margin-bottom: 1rem;
 }
 
 .tool-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
 }
 
 .tool-card {
-    background: rgba(255, 255, 255, 0.95);
-    padding: 2rem;
+    background: white;
+    padding: 1.5rem;
     border-radius: var(--border-radius);
-    box-shadow: var(--shadow);
     text-align: center;
+    box-shadow: var(--shadow);
     transition: all 0.3s ease;
-    position: relative;
+    border-left: 4px solid var(--highlight);
     overflow: hidden;
 }
 
 .tool-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(0, 180, 216, 0.1));
+    transform: translateY(-5px);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+    background: linear-gradient(135deg, white, rgba(255, 214, 10, 0.05));
 }
 
 .tool-card i {
-    font-size: 2.5rem;
-    color: var(--accent);
-    background: rgba(123, 44, 191, 0.1);
-    padding: 1.5rem;
+    font-size: 2.2rem;
+    color: var(--secondary);
+    background: rgba(0, 180, 216, 0.1);
+    padding: 1rem;
     border-radius: 50%;
     transition: all 0.3s ease;
 }
 
 .tool-card:hover i {
-    transform: scale(1.2);
-    background: rgba(255, 214, 10, 0.3);
+    transform: scale(1.1);
+    background: rgba(255, 214, 10, 0.2);
     color: var(--highlight);
 }
 
 .tool-card a {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     font-weight: 600;
     color: var(--primary);
     text-decoration: none;
+    margin-top: 0.75rem;
+    display: block;
     transition: all 0.3s ease;
 }
 
@@ -295,40 +321,42 @@ h2 {
 }
 
 .tool-card p {
-    font-size: 1rem;
+    font-size: 0.9rem;
     color: #64748b;
-    margin-top: 0.75rem;
+    margin-top: 0.5rem;
 }
 
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
 }
 
 .service-card {
-    background: rgba(255, 255, 255, 0.9);
-    padding: 2rem;
+    background: white;
+    padding: 1.5rem;
     border-radius: var(--border-radius);
     text-align: center;
     box-shadow: var(--shadow);
     transition: all 0.3s ease;
+    border-left: 4px solid var(--accent);
 }
 
 .service-card:hover {
-    transform: translateY(-8px);
+    transform: translateY(-5px);
 }
 
 .service-card i {
-    font-size: 2.5rem;
+    font-size: 2rem;
     color: var(--secondary);
+    margin-bottom: 0.75rem;
 }
 
 .contact-form {
-    max-width: 600px;
+    max-width: 500px;
     margin: 0 auto;
-    background: rgba(255, 255, 255, 0.95);
-    padding: 2rem;
+    background: white;
+    padding: 1.5rem;
     border-radius: var(--border-radius);
     box-shadow: var(--shadow);
 }
@@ -336,19 +364,26 @@ h2 {
 .contact-form input,
 .contact-form textarea {
     width: 100%;
-    padding: 1rem;
+    padding: 0.8rem;
     margin-bottom: 1rem;
     border: 2px solid var(--secondary);
     border-radius: 10px;
     background: rgba(248, 250, 252, 0.9);
     font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: var(--highlight);
+    box-shadow: 0 0 8px rgba(255, 214, 10, 0.3);
 }
 
 .contact-form button {
     background: var(--primary);
     color: white;
     border: none;
-    padding: 1rem 2rem;
+    padding: 0.8rem 1.5rem;
     border-radius: 10px;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -360,10 +395,10 @@ h2 {
 }
 
 .settings-card {
-    max-width: 600px;
-    margin: 0 auto;
-    background: rgba(255, 255, 255, 0.95);
-    padding: 2rem;
+    max-width: 500px;
+    margin: 0 auto 1.5rem;
+    background: white;
+    padding: 1.5rem;
     border-radius: var(--border-radius);
     box-shadow: var(--shadow);
 }
@@ -379,10 +414,11 @@ h2 {
     background: var(--secondary);
     color: white;
     border: none;
-    padding: 0.8rem 1.5rem;
+    padding: 0.7rem 1.2rem;
     border-radius: 10px;
     cursor: pointer;
     transition: all 0.3s ease;
+    font-size: 0.9rem;
 }
 
 .theme-btn:hover {
@@ -408,20 +444,20 @@ h2 {
 }
 
 .profile-card {
-    max-width: 400px;
+    max-width: 350px;
     margin: 0 auto;
-    background: rgba(255, 255, 255, 0.95);
-    padding: 2rem;
+    background: white;
+    padding: 1.5rem;
     border-radius: var(--border-radius);
     box-shadow: var(--shadow);
     text-align: center;
 }
 
 .profile-avatar {
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
 }
 
 @keyframes fadeIn {
@@ -435,10 +471,10 @@ h2 {
         gap: 1rem;
     }
     .search-bar input {
-        width: 200px;
+        width: 180px;
     }
     .search-bar input:focus {
-        width: 250px;
+        width: 220px;
     }
 }
 
@@ -458,9 +494,10 @@ h2 {
     }
     .search-bar input {
         width: 100%;
+        max-width: 250px;
     }
     .main-content {
-        padding: 6rem 1rem 1rem;
+        padding: 5rem 1rem 1rem;
     }
     .tool-grid {
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -474,4 +511,11 @@ h2 {
     h2 {
         font-size: 2rem;
     }
-}
+    .top-nav {
+        gap: 0.5rem;
+    }
+    .nav-item {
+        padding: 0.3rem 0.8rem;
+        font-size: 1rem;
+    }
+    }
