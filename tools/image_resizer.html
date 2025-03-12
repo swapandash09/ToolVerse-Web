@@ -4,27 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Image Resizer - ToolVerse</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-        body { background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460); min-height: 100vh; display: flex; justify-content: center; align-items: center; color: #fff; }
-        .container { background: rgba(255, 255, 255, 0.1); width: 400px; padding: 30px; border-radius: 20px; text-align: center; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4); transition: transform 0.3s ease; backdrop-filter: blur(12px); }
-        .container:hover { transform: scale(1.02); }
-        h1 { font-size: 28px; color: #ff6b6b; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700; display: flex; justify-content: center; align-items: center; }
-        h1 img { width: 40px; margin-right: 10px; filter: brightness(0) invert(1); }
-        p { font-size: 16px; color: #e0e0e0; line-height: 1.6; }
-        .back-btn { display: inline-block; margin-top: 20px; padding: 10px 20px; background: linear-gradient(90deg, #ff6b6b, #4ecdc4); color: #fff; text-decoration: none; border-radius: 10px; font-size: 14px; font-weight: 600; transition: all 0.3s ease; }
-        .back-btn:hover { background: linear-gradient(90deg, #4ecdc4, #ff6b6b); transform: scale(1.05); }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="common.css">
 </head>
 <body>
-    <div class="container">
-        <h1>
-            <img src="https://img.icons8.com/color/50/000000/resize.png" alt="Image Resizer Icon">
-            Image Resizer
-        </h1>
-        <p>This feature requires a backend and is under development. Stay tuned for exciting updates!</p>
-        <a href="../dashboard.html" class="back-btn">Back to Dashboard</a>
+    <div class="tool-container">
+        <h2><i class="fas fa-camera"></i> Image Resizer</h2>
+        <div class="upload-section">
+            <input type="file" id="imageInput" accept="image/*">
+            <div class="preview-container">
+                <img id="previewImage" src="" alt="Image Preview" style="display: none;">
+                <p id="noPreview">No image selected</p>
+            </div>
+        </div>
+        <div class="controls">
+            <label>Width: <input type="number" id="width" placeholder="px" min="1"></label>
+            <label>Height: <input type="number" id="height" placeholder="px" min="1"></label>
+            <button onclick="resizeImage()">Resize</button>
+            <button id="downloadBtn" onclick="downloadImage()" disabled>Download</button>
+        </div>
+        <p id="result">Upload an image to resize</p>
+        <a href="../index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Dashboard</a>
     </div>
+    <script src="image_resizer.js"></script>
 </body>
 </html>
