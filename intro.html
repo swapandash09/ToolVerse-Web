@@ -3,199 +3,204 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ToolVerse - Cosmic Welcome</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Orbitron:wght@700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #ff477e; /* Vibrant Pink */
-            --secondary: #00ddeb; /* Cyan Blue */
-            --accent: #6b48ff; /* Deep Purple */
-            --bg-dark: #0a0a1f; /* Cosmic Dark */
-            --text-glow: #ffffff;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
-        }
-
-        body {
-            background: radial-gradient(circle at center, var(--bg-dark), #1e1e3f);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            position: relative;
-        }
-
-        /* Cosmic Background Particles */
-        .particles {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .particle {
-            position: absolute;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            animation: float 10s infinite ease-in-out;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); opacity: 0.5; }
-            50% { transform: translateY(-20vh); opacity: 1; }
-        }
-
-        /* Intro Container */
-        .intro-container {
-            text-align: center;
-            color: var(--text-glow);
-            z-index: 2;
-            animation: fadeIn 1.5s ease-in-out;
-        }
-
-        .logo {
-            width: 150px;
-            height: 150px;
-            margin-bottom: 2rem;
-            filter: drop-shadow(0 0 20px var(--secondary));
-            animation: cosmicPulse 3s infinite ease-in-out, rotateGlow 10s infinite linear;
-        }
-
-        h1 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 4rem;
-            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
-            -webkit-background-clip: text;
-            color: transparent;
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
-            animation: textGlow 2s infinite alternate;
-        }
-
-        p {
-            font-size: 1.5rem;
-            margin-top: 1rem;
-            opacity: 0.9;
-            letter-spacing: 1px;
-            animation: slideUp 1s ease-in-out 0.5s forwards;
-        }
-
-        /* Loader */
-        .loader {
-            width: 250px;
-            height: 6px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 3px;
-            margin: 2rem auto 0;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .loader-bar {
-            width: 0;
-            height: 100%;
-            background: linear-gradient(90deg, var(--secondary), var(--primary));
-            animation: load 3s ease-in-out forwards;
-            box-shadow: 0 0 15px var(--secondary);
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            0% { opacity: 0; transform: scale(0.9); }
-            100% { opacity: 1; transform: scale(1); }
-        }
-
-        @keyframes cosmicPulse {
-            0% { transform: scale(1); filter: drop-shadow(0 0 10px var(--primary)); }
-            50% { transform: scale(1.15); filter: drop-shadow(0 0 25px var(--secondary)); }
-            100% { transform: scale(1); filter: drop-shadow(0 0 10px var(--primary)); }
-        }
-
-        @keyframes rotateGlow {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        @keyframes textGlow {
-            0% { text-shadow: 0 0 10px rgba(255, 255, 255, 0.3); }
-            100% { text-shadow: 0 0 20px rgba(255, 255, 255, 0.8); }
-        }
-
-        @keyframes slideUp {
-            0% { opacity: 0; transform: translateY(20px); }
-            100% { opacity: 0.9; transform: translateY(0); }
-        }
-
-        @keyframes load {
-            0% { width: 0; }
-            100% { width: 100%; }
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .logo { width: 120px; height: 120px; }
-            h1 { font-size: 2.5rem; }
-            p { font-size: 1.2rem; }
-            .loader { width: 200px; }
-        }
-
-        @media (max-width: 480px) {
-            .logo { width: 100px; height: 100px; }
-            h1 { font-size: 2rem; }
-            p { font-size: 1rem; }
-            .loader { width: 150px; }
-        }
-    </style>
+    <meta name="theme-color" content="#ff2e63">
+    <meta name="description" content="ToolVerse - Your Ultimate Productivity Suite">
+    <title>ToolVerse - Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="particles" id="particles"></div>
-    <div class="intro-container">
-        <svg class="logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-            <path d="M20 20 H80 V80 H20 Z" fill="url(#grad1)" stroke="#00ddeb" stroke-width="4"/>
-            <rect x="40" y="10" width="20" height="20" fill="#ff477e" rx="5"/>
-            <circle cx="50" cy="50" r="15" fill="none" stroke="#ffffff" stroke-width="3"/>
-            <path d="M45 45 L55 55 M55 45 L45 55" stroke="#ffffff" stroke-width="3"/>
-            <defs>
-                <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" style="stop-color:#ff477e;stop-opacity:1" />
-                    <stop offset="50%" style="stop-color:#00ddeb;stop-opacity:1" />
-                    <stop offset="100%" style="stop-color:#6b48ff;stop-opacity:1" />
-                </linearGradient>
-            </defs>
-        </svg>
-        <h1>ToolVerse</h1>
-        <p>Unleash Your Productivity Cosmos</p>
-        <div class="loader">
-            <div class="loader-bar"></div>
-        </div>
+    <div class="app-container" data-theme="light">
+        <header class="top-header">
+            <div class="logo-section">
+                <svg class="logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 20 H80 V80 H20 Z" fill="url(#grad1)" stroke="#00b4d8" stroke-width="4"/>
+                    <rect x="40" y="10" width="20" height="20" fill="#ff2e63" rx="5"/>
+                    <circle cx="50" cy="50" r="15" fill="none" stroke="#ffffff" stroke-width="3"/>
+                    <path d="M45 45 L55 55 M55 45 L45 55" stroke="#ffffff" stroke-width="3"/>
+                    <defs>
+                        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#ff2e63;stop-opacity:1" />
+                            <stop offset="50%" style="stop-color:#00b4d8;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#7b2cbf;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <h1>ToolVerse</h1>
+            </div>
+            <nav class="top-nav">
+                <div class="nav-item active" data-section="home"><i class="fas fa-home"></i> Home</div>
+                <div class="nav-item" data-section="tools"><i class="fas fa-toolbox"></i> Tools</div>
+                <div class="nav-item" data-section="services"><i class="fas fa-concierge-bell"></i> Services</div>
+                <div class="nav-item" data-section="contact"><i class="fas fa-address-book"></i> Contact</div>
+                <div class="nav-item" data-section="settings"><i class="fas fa-cog"></i> Settings</div>
+                <div class="nav-item" data-section="profile"><i class="fas fa-user"></i> Profile</div>
+            </nav>
+            <div class="header-controls">
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="toolSearch" placeholder="Search Tools..." aria-label="Search Tools">
+                </div>
+                <button class="theme-toggle" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button>
+                <div class="profile">
+                    <img src="https://api.dicebear.com/7.x/identicon/svg?seed=user" alt="User Avatar" class="avatar">
+                    <span class="username">Guest</span>
+                </div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <section class="content-section active" id="home">
+                <div class="hero">
+                    <h2>Welcome to ToolVerse</h2>
+                    <p>Your Ultimate Productivity Suite</p>
+                </div>
+                <div class="dashboard-stats">
+                    <div class="stat-card">
+                        <i class="fas fa-tools"></i>
+                        <h3>8 Tools</h3>
+                        <p>Boost Your Workflow</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-users"></i>
+                        <h3>10K+</h3>
+                        <p>Active Users</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-cloud"></i>
+                        <h3>99.9%</h3>
+                        <p>Uptime Guarantee</p>
+                    </div>
+                </div>
+                <div class="latest-tools">
+                    <h3>Featured Tools</h3>
+                    <div class="tool-grid">
+                        <div class="tool-card">
+                            <i class="fas fa-file-image"></i>
+                            <a href="tools/jpg_to_pdf.html">JPG to PDF</a>
+                            <p>Convert images to PDF</p>
+                        </div>
+                        <div class="tool-card">
+                            <i class="fas fa-file-pdf"></i>
+                            <a href="tools/pdf_to_jpg.html">PDF to JPG</a>
+                            <p>Fast PDF conversion</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="content-section" id="tools">
+                <h2>Our Tools</h2>
+                <div class="tool-grid">
+                    <div class="tool-card">
+                        <i class="fas fa-compress-arrows-alt"></i>
+                        <a href="tools/image_compressor.html">Image Compressor</a>
+                        <p>Optimize images effortlessly</p>
+                    </div>
+                    <div class="tool-card">
+                        <i class="fas fa-file-pdf"></i>
+                        <a href="tools/pdf_to_jpg.html">PDF to JPG</a>
+                        <p>Convert PDFs to images</p>
+                    </div>
+                    <div class="tool-card">
+                        <i class="fas fa-pen"></i>
+                        <a href="tools/text_editor.html">Text Editor</a>
+                        <p>Edit text on the go</p>
+                    </div>
+                    <div class="tool-card">
+                        <i class="fas fa-file"></i>
+                        <a href="tools/file_converter.html">File Converter</a>
+                        <p>Convert files with ease</p>
+                    </div>
+                    <div class="tool-card">
+                        <i class="fas fa-tasks"></i>
+                        <a href="tools/task_manager.html">Task Manager</a>
+                        <p>Organize your tasks</p>
+                    </div>
+                    <div class="tool-card">
+                        <i class="fas fa-camera"></i>
+                        <a href="tools/image_resizer.html">Image Resizer</a>
+                        <p>Resize images perfectly</p>
+                    </div>
+                    <div class="tool-card">
+                        <i class="fas fa-calculator"></i>
+                        <a href="tools/calculator.html">Calculator</a>
+                        <p>Quick calculations</p>
+                    </div>
+                    <div class="tool-card">
+                        <i class="fas fa-file-image"></i>
+                        <a href="tools/jpg_to_pdf.html">JPG to PDF</a>
+                        <p>Convert images to PDF</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="content-section" id="services">
+                <h2>Our Services</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <i class="fas fa-rocket"></i>
+                        <h3>Productivity Tools</h3>
+                        <p>Boost your efficiency</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-cloud"></i>
+                        <h3>Cloud Integration</h3>
+                        <p>Access anywhere</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-server"></i>
+                        <h3>Reliable Solutions</h3>
+                        <p>Always available</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="content-section" id="contact">
+                <h2>Contact Us</h2>
+                <form class="contact-form">
+                    <input type="email" id="contactEmail" placeholder="Your Email" required aria-label="Email">
+                    <textarea id="contactMessage" placeholder="Your Message" required aria-label="Message"></textarea>
+                    <button type="button" onclick="sendContact()">Send Message</button>
+                </form>
+            </section>
+
+            <section class="content-section" id="settings">
+                <h2>Settings</h2>
+                <div class="settings-card">
+                    <h3><i class="fas fa-paint-roller"></i> Theme Customization</h3>
+                    <p>Choose your theme:</p>
+                    <div class="theme-options">
+                        <button class="theme-btn" data-theme="light">Light</button>
+                        <button class="theme-btn" data-theme="dark">Dark</button>
+                        <button class="theme-btn" data-theme="cosmic">Cosmic</button>
+                    </div>
+                    <p id="themeStatus">Current Theme: Light</p>
+                </div>
+                <div class="settings-card">
+                    <h3><i class="fas fa-database"></i> Storage Permission</h3>
+                    <p>Allow ToolVerse to save your data?</p>
+                    <div class="button-group">
+                        <button onclick="requestStoragePermission()">Allow</button>
+                        <button onclick="denyStoragePermission()">Deny</button>
+                    </div>
+                    <p id="storageStatus">Status: Not Granted</p>
+                </div>
+            </section>
+
+            <section class="content-section" id="profile">
+                <h2>Your Profile</h2>
+                <div class="profile-card">
+                    <img src="https://api.dicebear.com/7.x/identicon/svg?seed=user" alt="User Avatar" class="profile-avatar">
+                    <p><strong>Name:</strong> Guest</p>
+                    <p><strong>Email:</strong> guest@example.com</p>
+                    <p><strong>Joined:</strong> March 12, 2025</p>
+                </div>
+            </section>
+        </main>
     </div>
 
-    <script>
-        // Generate Particles
-        const particleContainer = document.getElementById('particles');
-        for (let i = 0; i < 50; i++) {
-            const particle = document.createElement('div');
-            particle.classList.add('particle');
-            particle.style.width = `${Math.random() * 5 + 2}px`;
-            particle.style.height = particle.style.width;
-            particle.style.left = `${Math.random() * 100}vw`;
-            particle.style.top = `${Math.random() * 100}vh`;
-            particle.style.animationDelay = `${Math.random() * 5}s`;
-            particleContainer.appendChild(particle);
-        }
-
-        // Redirect after 3 seconds
-        setTimeout(() => {
-            window.location.href = 'index.html';
-        }, 3000);
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
