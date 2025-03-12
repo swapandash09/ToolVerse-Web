@@ -3,281 +3,182 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#ff6b6b">
-    <title>ToolVerse - Unleash Your Future</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <meta name="theme-color" content="#ff477e">
+    <meta name="description" content="ToolVerse - Your Professional Toolkit for Productivity">
+    <title>ToolVerse - Professional Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/all.min.css">
-    <style>
-        :root {
-            --primary: #ff6b6b;
-            --secondary: #4ecdc4;
-            --bg-dark: #1a1a2e;
-            --text-light: #e0e0e0;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        body {
-            background: linear-gradient(135deg, var(--bg-dark), #16213e, #0f3460);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            position: relative;
-        }
-
-        /* Enhanced Background with Particles */
-        .bg-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, rgba(78, 205, 196, 0.3) 0%, rgba(0, 0, 0, 0.8) 100%);
-            animation: overlayPulse 4s infinite ease-in-out;
-            z-index: 0;
-        }
-
-        .particles {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-            pointer-events: none;
-        }
-
-        /* Intro Container */
-        .intro {
-            text-align: center;
-            position: relative;
-            z-index: 2;
-            animation: fadeIn 1.5s ease-in-out;
-            padding: 2rem;
-        }
-
-        .logo {
-            width: 140px;
-            height: 140px;
-            margin-bottom: 30px;
-            filter: drop-shadow(0 0 25px rgba(78, 205, 196, 0.7));
-            animation: spinGlow 6s linear infinite;
-        }
-
-        h2 {
-            font-size: 48px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            color: transparent;
-            font-weight: 700;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            animation: textGlow 1.5s infinite alternate;
-        }
-
-        p {
-            font-size: 22px;
-            color: var(--text-light);
-            font-style: italic;
-            margin-top: 20px;
-            animation: slideUp 1s ease-in-out;
-        }
-
-        /* Progress Bar */
-        .progress-container {
-            width: 200px;
-            height: 6px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 3px;
-            margin: 20px auto 0;
-            overflow: hidden;
-        }
-
-        .progress-bar {
-            width: 0;
-            height: 100%;
-            background: var(--secondary);
-            animation: load 3s linear forwards;
-        }
-
-        /* Theme Toggle */
-        .theme-toggle {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: none;
-            border: none;
-            color: var(--text-light);
-            font-size: 1.5rem;
-            cursor: pointer;
-            z-index: 3;
-            transition: transform 0.3s;
-        }
-
-        .theme-toggle:hover {
-            transform: scale(1.2);
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
-        }
-
-        @keyframes spinGlow {
-            0% { transform: rotate(0deg) scale(1); filter: drop-shadow(0 0 20px rgba(78, 205, 196, 0.6)); }
-            50% { transform: rotate(180deg) scale(1.1); filter: drop-shadow(0 0 30px rgba(255, 107, 107, 0.8)); }
-            100% { transform: rotate(360deg) scale(1); filter: drop-shadow(0 0 20px rgba(78, 205, 196, 0.6)); }
-        }
-
-        @keyframes textGlow {
-            0% { text-shadow: 0 0 10px var(--primary); }
-            100% { text-shadow: 0 0 20px var(--secondary); }
-        }
-
-        @keyframes slideUp {
-            0% { transform: translateY(30px); opacity: 0; }
-            100% { transform: translateY(0); opacity: 1; }
-        }
-
-        @keyframes overlayPulse {
-            0% { opacity: 0.5; }
-            50% { opacity: 0.8; }
-            100% { opacity: 0.5; }
-        }
-
-        @keyframes load {
-            0% { width: 0; }
-            100% { width: 100%; }
-        }
-
-        /* Responsive */
-        @media (min-width: 769px) {
-            .logo { width: 180px; height: 180px; }
-            h2 { font-size: 60px; }
-            p { font-size: 28px; }
-            .progress-container { width: 300px; }
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body data-theme="dark">
-    <!-- Background Elements -->
-    <div class="bg-overlay"></div>
-    <canvas class="particles" id="particles"></canvas>
+<body>
+    <div class="app-container" data-theme="light">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo-section">
+                <svg class="logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 20 H80 V80 H20 Z" fill="url(#grad1)" stroke="#00ddeb" stroke-width="4"/>
+                    <rect x="40" y="10" width="20" height="20" fill="#ff477e" rx="5"/>
+                    <circle cx="50" cy="50" r="15" fill="none" stroke="#ffffff" stroke-width="3"/>
+                    <path d="M45 45 L55 55 M55 45 L45 55" stroke="#ffffff" stroke-width="3"/>
+                    <defs>
+                        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#ff477e;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#00ddeb;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <h1>ToolVerse</h1>
+            </div>
+            <nav class="nav-menu">
+                <div class="nav-item active" data-section="home"><i class="fas fa-home"></i> Dashboard</div>
+                <div class="nav-item" data-section="tools"><i class="fas fa-toolbox"></i> Tools</div>
+                <div class="nav-item" data-section="services"><i class="fas fa-concierge-bell"></i> Services</div>
+                <div class="nav-item" data-section="contact"><i class="fas fa-address-book"></i> Contact</div>
+                <div class="nav-item" data-section="settings"><i class="fas fa-cog"></i> Settings</div>
+                <div class="nav-item" data-section="profile"><i class="fas fa-user"></i> Profile</div>
+            </nav>
+        </aside>
 
-    <!-- Intro Content -->
-    <div class="intro">
-        <svg class="logo" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M50 10 L70 40 L60 40 L60 80 L40 80 L40 40 L30 40 Z" fill="url(#grad1)" stroke="#4ecdc4" stroke-width="4"/>
-            <circle cx="50" cy="25" r="12" fill="#ff6b6b" opacity="0.9" class="animate-pulse"/>
-            <path d="M45 45 L55 55 M55 45 L45 55" stroke="#ffffff" stroke-width="2" class="animate-fade"/>
-            <defs>
-                <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" style="stop-color:#ff6b6b;stop-opacity:1" />
-                    <stop offset="100%" style="stop-color:#4ecdc4;stop-opacity:1" />
-                </linearGradient>
-            </defs>
-        </svg>
-        <h2>ToolVerse</h2>
-        <p>Unleash Your Future</p>
-        <div class="progress-container">
-            <div class="progress-bar"></div>
-        </div>
+        <!-- Header -->
+        <header class="header">
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" id="toolSearch" placeholder="Search Tools..." aria-label="Search Tools">
+            </div>
+            <div class="user-controls">
+                <button class="theme-toggle" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button>
+                <div class="profile">
+                    <img src="https://api.dicebear.com/7.x/identicon/svg?seed=user" alt="User Avatar" class="avatar">
+                    <span class="username">Guest</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <section class="content-section active" id="home">
+                <h2>Welcome to ToolVerse</h2>
+                <div class="dashboard-stats">
+                    <div class="stat-card">
+                        <i class="fas fa-tools"></i>
+                        <h3>7 Tools</h3>
+                        <p>Ready to Boost Productivity</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-users"></i>
+                        <h3>10K+</h3>
+                        <p>Active Users</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-cloud"></i>
+                        <h3>99.9%</h3>
+                        <p>Uptime Guarantee</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="content-section" id="tools">
+                <h2>Toolbox</h2>
+                <div class="tool-grid">
+                    <div class="tool-card">
+                        <i class="fas fa-compress-arrows-alt"></i>
+                        <a href="tools/image_compressor.html">Image Compressor</a>
+                        <p>Optimize your images effortlessly</p>
+                    </div>
+                    <div class="tool-card">
+                        <i class="fas fa-file-pdf"></i>
+                        <a href="tools/pdf_to_jpg.html">PDF to JPG</a>
+                        <p>Convert PDFs to images</p>
+                    </div>
+                    <div class="tool-card">
+                        <i class="fas fa-pen"></i>
+                        <a href="tools/text_editor.html">Text Editor</a>
+                        <p>Edit text on the go</p>
+                    </div>
+                    <div class="tool-card">
+                        <i class="fas fa-file"></i>
+                        <a href="tools/file_converter.html">File Converter</a>
+                        <p>Convert files with ease</p>
+                    </div>
+                    <div class="tool-card">
+                        <i class="fas fa-tasks"></i>
+                        <a href="tools/task_manager.html">Task Manager</a>
+                        <p>Organize your tasks</p>
+                    </div>
+                    <div class="tool-card">
+                        <i class="fas fa-camera"></i>
+                        <a href="tools/image_resizer.html">Image Resizer</a>
+                        <p>Resize images perfectly</p>
+                    </div>
+                    <div class="tool-card">
+                        <i class="fas fa-calculator"></i>
+                        <a href="tools/calculator.html">Calculator</a>
+                        <p>Quick calculations</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="content-section" id="services">
+                <h2>Our Services</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <i class="fas fa-rocket"></i>
+                        <h3>Productivity Tools</h3>
+                        <p>Boost your efficiency</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-cloud"></i>
+                        <h3>Cloud Integration</h3>
+                        <p>Access anywhere</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-server"></i>
+                        <h3>Reliable Solutions</h3>
+                        <p>Always available</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="content-section" id="contact">
+                <h2>Contact Us</h2>
+                <form class="contact-form">
+                    <input type="email" id="contactEmail" placeholder="Your Email" required aria-label="Email">
+                    <textarea id="contactMessage" placeholder="Your Message" required aria-label="Message"></textarea>
+                    <button type="button" onclick="sendContact()">Send Message</button>
+                </form>
+                <div class="contact-info">
+                    <p><i class="fas fa-envelope"></i> support@toolverse.com</p>
+                    <p><i class="fas fa-phone"></i> +91-98765-43210</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Tech Hub, India</p>
+                </div>
+            </section>
+
+            <section class="content-section" id="settings">
+                <h2>Settings</h2>
+                <div class="settings-card">
+                    <h3><i class="fas fa-database"></i> Storage Permission</h3>
+                    <p>Allow ToolVerse to save your data?</p>
+                    <div class="button-group">
+                        <button onclick="requestStoragePermission()">Allow</button>
+                        <button onclick="denyStoragePermission()">Deny</button>
+                    </div>
+                    <p id="storageStatus">Status: Not Granted</p>
+                </div>
+            </section>
+
+            <section class="content-section" id="profile">
+                <h2>Your Profile</h2>
+                <div class="profile-card">
+                    <img src="https://api.dicebear.com/7.x/identicon/svg?seed=user" alt="User Avatar" class="profile-avatar">
+                    <p><strong>Name:</strong> [Your Name]</p>
+                    <p><strong>Email:</strong> user@example.com</p>
+                    <p><strong>Joined:</strong> February 28, 2025</p>
+                    <a href="#" class="login-link">Login to Customize</a>
+                </div>
+            </section>
+        </main>
     </div>
 
-    <!-- Theme Toggle -->
-    <button class="theme-toggle" aria-label="Toggle theme">
-        <i class="fas fa-moon"></i>
-    </button>
-
-    <script>
-        // Redirect after 3 seconds
-        setTimeout(() => {
-            window.location.href = 'dashboard.html';
-        }, 3000);
-
-        // Theme Toggle
-        const toggleTheme = () => {
-            const body = document.body;
-            const currentTheme = body.dataset.theme === 'dark' ? 'light' : 'dark';
-            body.dataset.theme = currentTheme;
-            localStorage.setItem('theme', currentTheme);
-            document.querySelector('.theme-toggle i').classList.toggle('fa-moon');
-            document.querySelector('.theme-toggle i').classList.toggle('fa-sun');
-        };
-
-        document.querySelector('.theme-toggle').addEventListener('click', toggleTheme);
-
-        // Load saved theme
-        const savedTheme = localStorage.getItem('theme') || 'dark';
-        document.body.dataset.theme = savedTheme;
-        if (savedTheme === 'light') {
-            document.querySelector('.theme-toggle i').classList.replace('fa-moon', 'fa-sun');
-        }
-
-        // Particle Animation
-        const canvas = document.getElementById('particles');
-        const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-
-        const particlesArray = [];
-        const numberOfParticles = 50;
-
-        class Particle {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 5 + 1;
-                this.speedX = Math.random() * 1 - 0.5;
-                this.speedY = Math.random() * 1 - 0.5;
-            }
-            update() {
-                this.x += this.speedX;
-                this.y += this.speedY;
-                if (this.size > 0.2) this.size -= 0.01;
-            }
-            draw() {
-                ctx.fillStyle = 'rgba(78, 205, 196, 0.8)';
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
-            }
-        }
-
-        function init() {
-            for (let i = 0; i < numberOfParticles; i++) {
-                particlesArray.push(new Particle());
-            }
-        }
-
-        function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            for (let i = 0; i < particlesArray.length; i++) {
-                particlesArray[i].update();
-                particlesArray[i].draw();
-                if (particlesArray[i].size <= 0.2) {
-                    particlesArray.splice(i, 1);
-                    i--;
-                    particlesArray.push(new Particle());
-                }
-            }
-            requestAnimationFrame(animate);
-        }
-
-        init();
-        animate();
-
-        // Resize canvas on window resize
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
