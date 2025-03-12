@@ -11,8 +11,19 @@
 <body>
     <div class="tool-container">
         <h2><i class="fas fa-compress-arrows-alt"></i> Image Compressor</h2>
-        <input type="file" id="imageInput" accept="image/*">
-        <button onclick="compressImage()">Compress</button>
+        <div class="upload-section">
+            <input type="file" id="imageInput" accept="image/*">
+            <div class="preview-container">
+                <img id="previewImage" src="" alt="Image Preview" style="display: none;">
+                <p id="noPreview">No image selected</p>
+            </div>
+        </div>
+        <div class="controls">
+            <label for="quality">Quality: <span id="qualityValue">75%</span></label>
+            <input type="range" id="quality" min="10" max="100" value="75">
+            <button onclick="compressImage()">Compress</button>
+            <button id="downloadBtn" onclick="downloadImage()" disabled>Download</button>
+        </div>
         <p id="result">Upload an image to compress</p>
         <a href="../index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Dashboard</a>
     </div>
