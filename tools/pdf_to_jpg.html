@@ -4,27 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PDF to JPG - ToolVerse</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-        body { background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460); min-height: 100vh; display: flex; justify-content: center; align-items: center; color: #fff; }
-        .container { background: rgba(255, 255, 255, 0.1); width: 400px; padding: 30px; border-radius: 20px; text-align: center; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4); transition: transform 0.3s ease; backdrop-filter: blur(12px); }
-        .container:hover { transform: scale(1.02); }
-        h1 { font-size: 28px; color: #ff6b6b; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700; display: flex; justify-content: center; align-items: center; }
-        h1 img { width: 40px; margin-right: 10px; filter: brightness(0) invert(1); }
-        p { font-size: 16px; color: #e0e0e0; line-height: 1.6; }
-        .back-btn { display: inline-block; margin-top: 20px; padding: 10px 20px; background: linear-gradient(90deg, #ff6b6b, #4ecdc4); color: #fff; text-decoration: none; border-radius: 10px; font-size: 14px; font-weight: 600; transition: all 0.3s ease; }
-        .back-btn:hover { background: linear-gradient(90deg, #4ecdc4, #ff6b6b); transform: scale(1.05); }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="common.css">
 </head>
 <body>
-    <div class="container">
-        <h1>
-            <img src="https://img.icons8.com/color/50/000000/pdf.png" alt="PDF to JPG Icon">
-            PDF to JPG
-        </h1>
-        <p>This feature requires a backend and is under development. Stay tuned for exciting updates!</p>
-        <a href="../dashboard.html" class="back-btn">Back to Dashboard</a>
+    <div class="tool-container">
+        <h2><i class="fas fa-file-pdf"></i> PDF to JPG</h2>
+        <div class="upload-section">
+            <input type="file" id="pdfInput" accept=".pdf">
+            <div class="preview-container">
+                <img id="previewImage" src="" alt="Converted JPG Preview" style="display: none;">
+                <p id="noPreview">No PDF selected</p>
+            </div>
+        </div>
+        <div class="controls">
+            <button onclick="convertPDF()">Convert</button>
+            <button id="downloadBtn" onclick="downloadImage()" disabled>Download JPG</button>
+        </div>
+        <p id="result">Upload a PDF to convert</p>
+        <a href="../index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Dashboard</a>
     </div>
+    <script src="pdf_to_jpg.js"></script>
 </body>
 </html>
