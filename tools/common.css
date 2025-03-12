@@ -1,15 +1,21 @@
 :root {
-    --primary: #ff477e;
-    --secondary: #00ddeb;
-    --accent: #6b48ff;
+    --primary: #ff477e; /* Vibrant Pink */
+    --secondary: #00ddeb; /* Cyan Blue */
+    --accent: #6b48ff; /* Deep Purple */
     --bg-light: #f5f7fa;
     --text-light: #2d2d2d;
     --shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
     --border-radius: 20px;
 }
 
-body {
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
     font-family: 'Inter', sans-serif;
+}
+
+body {
     background: var(--bg-light);
     color: var(--text-light);
     min-height: 100vh;
@@ -19,6 +25,7 @@ body {
     padding: 2rem;
 }
 
+/* Tool Container */
 .tool-container {
     max-width: 800px;
     width: 100%;
@@ -29,6 +36,7 @@ body {
     text-align: center;
 }
 
+/* Heading */
 h2 {
     font-size: 2rem;
     color: var(--primary);
@@ -39,6 +47,7 @@ h2 {
     gap: 0.5rem;
 }
 
+/* Input and Upload Sections */
 .upload-section, .input-section {
     margin-bottom: 1.5rem;
 }
@@ -46,7 +55,8 @@ h2 {
 input[type="file"],
 input[type="text"],
 input[type="number"],
-textarea {
+textarea,
+select {
     width: 100%;
     padding: 0.8rem;
     margin: 0.5rem 0;
@@ -54,8 +64,29 @@ textarea {
     border-radius: 10px;
     background: rgba(255, 255, 255, 0.8);
     font-size: 1rem;
+    transition: border-color 0.3s ease;
 }
 
+input[type="file"]:focus,
+input[type="text"]:focus,
+input[type="number"]:focus,
+textarea:focus,
+select:focus {
+    border-color: var(--secondary);
+    outline: none;
+}
+
+textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+select {
+    appearance: none;
+    background: rgba(255, 255, 255, 0.8) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2300ddeb' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E") no-repeat right 1rem center;
+}
+
+/* Preview Container */
 .preview-container {
     margin-top: 1rem;
     border: 2px dashed #ddd;
@@ -66,6 +97,11 @@ textarea {
     justify-content: center;
     align-items: center;
     background: rgba(245, 247, 250, 0.5);
+    transition: border-color 0.3s ease;
+}
+
+.preview-container:hover {
+    border-color: var(--secondary);
 }
 
 #previewImage, .preview-output {
@@ -76,16 +112,36 @@ textarea {
 
 #noPreview {
     color: #666;
+    font-size: 1rem;
 }
 
+/* Controls Section */
 .controls {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
     margin-bottom: 1.5rem;
     justify-content: center;
+    align-items: center;
 }
 
+/* Calculator Grid */
+.calculator-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+#calcDisplay {
+    font-size: 1.5rem;
+    text-align: right;
+    background: rgba(245, 247, 250, 0.9);
+    border: none;
+}
+
+/* Labels */
 label {
     font-weight: 600;
     color: var(--text-light);
@@ -94,12 +150,15 @@ label {
     gap: 0.5rem;
 }
 
+/* Range Slider */
 input[type="range"] {
     width: 100%;
     max-width: 300px;
     accent-color: var(--secondary);
+    cursor: pointer;
 }
 
+/* Buttons */
 button {
     background: var(--secondary);
     color: white;
@@ -108,6 +167,7 @@ button {
     border-radius: 10px;
     cursor: pointer;
     transition: all 0.3s ease;
+    font-weight: 600;
 }
 
 button:hover {
@@ -121,6 +181,7 @@ button:disabled {
     transform: none;
 }
 
+/* Output Section */
 .output-section {
     margin-top: 1.5rem;
 }
@@ -141,13 +202,31 @@ button:disabled {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    transition: background 0.3s ease;
 }
 
+.output-section ul li:hover {
+    background: rgba(0, 221, 235, 0.1);
+}
+
+.output-section ul li button {
+    background: #ff6b6b;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+}
+
+.output-section ul li button:hover {
+    background: #ff4757;
+}
+
+/* Result Text */
 p {
     margin-top: 1rem;
     color: var(--text-light);
+    font-size: 1rem;
 }
 
+/* Back Link */
 .back-link {
     display: inline-flex;
     align-items: center;
@@ -163,6 +242,7 @@ p {
     color: var(--primary);
 }
 
+/* Responsive Design */
 @media (max-width: 768px) {
     .tool-container {
         padding: 1.5rem;
@@ -176,5 +256,18 @@ p {
     .controls {
         flex-direction: column;
         gap: 0.8rem;
+    }
+    .calculator-grid {
+        grid-template-columns: repeat(4, 1fr);
+        max-width: 100%;
+    }
+    button {
+        padding: 0.7rem 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .calculator-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
