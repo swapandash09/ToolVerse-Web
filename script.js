@@ -12,7 +12,17 @@ document.addEventListener('DOMContentLoaded', () => {
             navItems.forEach(nav => {
                 nav.classList.toggle('active', nav === item);
             });
+            if (window.innerWidth <= 768) {
+                document.querySelector('.sidebar').classList.remove('active');
+            }
         });
+    });
+
+    // Mobile Menu Toggle
+    const menuToggle = document.querySelector('.menu-toggle');
+    const sidebar = document.querySelector('.sidebar');
+    menuToggle.addEventListener('click', () => {
+        sidebar.classList.toggle('active');
     });
 
     // Search Tools
