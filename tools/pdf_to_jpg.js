@@ -4,40 +4,58 @@ document.getElementById('pdfInput').addEventListener('change', function(e) {
     const file = e.target.files[0];
     if (file) {
         document.getElementById('noPreview').textContent = `Selected: ${file.name}`;
+        document.getElementById('previewImage').style.display = 'none';
+        document.getElementById('result').textContent = 'PDF loaded. Click Convert to proceed.';
+        document.getElementById('downloadBtn').disabled = true;
     }
 });
 
-function convertPDF() {
+async function convertPDF() {
     const fileInput = document.getElementById('pdfInput');
     const result = document.getElementById('result');
-    const previewOutput = document.getElementById('previewOutput');
+    const previewImage = document.getElementById('previewImage');
+    const noPreview = document.getElementById('noPreview');
 
     if (!fileInput.files.length) {
         result.textContent = 'Please upload a PDF';
         return;
     }
 
-    result.textContent = 'Converting... (Simulated)';
-    setTimeout(() => {
-        // Simulated conversion (actual PDF to JPG needs a library like pdf.js)
-        const file = fileInput.files[0];
-        const img = new Image();
-        img.src = 'https://via.placeholder.com/300x200?text=Converted+JPG'; // Placeholder
-        previewOutput.innerHTML = '';
-        previewOutput.appendChild(img);
-        previewOutput.style.display = 'block';
-        document.getElementById('noPreview').style.display = 'none';
+    const file = fileInput.files[0];
+    result.textContent = 'Converting...';
+
+    const arrayBuffer = await file.arrayBuffer();
+    const pdf = await pdfjsLib.getDocument(arrayBuffer).promise;
+    const page = await pdf.getPage(1); // First page only
+
+    const scale = 1.5;
+    const viewport = page.getViewport({ scale });
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = viewport.width;
+    canvas.height = viewport.height;
+
+    await page.render({
+        canvasContext: ctx,
+        viewport: viewport
+    }).promise;
+
+    canvas.toBlob(function(blob) {
+        convertedBlob = blob;
+        previewImage.src = URL.createObjectURL(blob);
+        previewImage.style.display = 'block';
+        noPreview.style.display = 'none';
         result.textContent = 'Converted successfully!';
-        convertedBlob = new Blob([/* Simulated JPG data */], { type: 'image/jpeg' });
         document.getElementById('downloadBtn').disabled = false;
-    }, 1000);
+    }, 'image/jpeg');
 }
 
 function downloadJPG() {
     if (convertedBlob) {
+        const fileName = document.getElementById('pdfInput').files[0].name.replace('.pdf', '.jpg');
         const link = document.createElement('a');
         link.href = URL.createObjectURL(convertedBlob);
-        link.download = 'converted_image.jpg';
+        link.download = fileName;
         link.click();
     }
 }
