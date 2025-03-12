@@ -3,80 +3,151 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ToolVerse - Welcome</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>ToolVerse - Cosmic Welcome</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Orbitron:wght@700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #ff477e;
-            --secondary: #00ddeb;
+            --primary: #ff477e; /* Vibrant Pink */
+            --secondary: #00ddeb; /* Cyan Blue */
+            --accent: #6b48ff; /* Deep Purple */
+            --bg-dark: #0a0a1f; /* Cosmic Dark */
+            --text-glow: #ffffff;
         }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Inter', sans-serif;
         }
+
         body {
-            background: linear-gradient(135deg, #1e1e2f, #2d2d4a);
+            background: radial-gradient(circle at center, var(--bg-dark), #1e1e3f);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             overflow: hidden;
+            position: relative;
         }
+
+        /* Cosmic Background Particles */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            animation: float 10s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); opacity: 0.5; }
+            50% { transform: translateY(-20vh); opacity: 1; }
+        }
+
+        /* Intro Container */
         .intro-container {
             text-align: center;
-            color: white;
+            color: var(--text-glow);
+            z-index: 2;
             animation: fadeIn 1.5s ease-in-out;
         }
+
         .logo {
-            width: 120px;
-            height: 120px;
+            width: 150px;
+            height: 150px;
             margin-bottom: 2rem;
-            animation: cosmicPulse 4s infinite ease-in-out;
             filter: drop-shadow(0 0 20px var(--secondary));
+            animation: cosmicPulse 3s infinite ease-in-out, rotateGlow 10s infinite linear;
         }
+
         h1 {
-            font-size: 3rem;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            font-family: 'Orbitron', sans-serif;
+            font-size: 4rem;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
             -webkit-background-clip: text;
             color: transparent;
-            font-weight: 700;
-            letter-spacing: 2px;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+            animation: textGlow 2s infinite alternate;
         }
+
         p {
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             margin-top: 1rem;
-            opacity: 0.8;
+            opacity: 0.9;
+            letter-spacing: 1px;
+            animation: slideUp 1s ease-in-out 0.5s forwards;
         }
+
+        /* Loader */
         .loader {
-            width: 200px;
-            height: 4px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 2px;
+            width: 250px;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
             margin: 2rem auto 0;
             overflow: hidden;
+            position: relative;
         }
+
         .loader-bar {
             width: 0;
             height: 100%;
-            background: var(--secondary);
-            animation: load 3s linear forwards;
+            background: linear-gradient(90deg, var(--secondary), var(--primary));
+            animation: load 3s ease-in-out forwards;
+            box-shadow: 0 0 15px var(--secondary);
         }
+
+        /* Animations */
         @keyframes fadeIn {
-            0% { opacity: 0; transform: translateY(20px); }
-            100% { opacity: 1; transform: translateY(0); }
+            0% { opacity: 0; transform: scale(0.9); }
+            100% { opacity: 1; transform: scale(1); }
         }
+
         @keyframes cosmicPulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
+            0% { transform: scale(1); filter: drop-shadow(0 0 10px var(--primary)); }
+            50% { transform: scale(1.15); filter: drop-shadow(0 0 25px var(--secondary)); }
+            100% { transform: scale(1); filter: drop-shadow(0 0 10px var(--primary)); }
         }
+
+        @keyframes rotateGlow {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes textGlow {
+            0% { text-shadow: 0 0 10px rgba(255, 255, 255, 0.3); }
+            100% { text-shadow: 0 0 20px rgba(255, 255, 255, 0.8); }
+        }
+
+        @keyframes slideUp {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 0.9; transform: translateY(0); }
+        }
+
         @keyframes load {
             0% { width: 0; }
             100% { width: 100%; }
         }
+
+        /* Responsive */
         @media (max-width: 768px) {
+            .logo { width: 120px; height: 120px; }
+            h1 { font-size: 2.5rem; }
+            p { font-size: 1.2rem; }
+            .loader { width: 200px; }
+        }
+
+        @media (max-width: 480px) {
             .logo { width: 100px; height: 100px; }
             h1 { font-size: 2rem; }
             p { font-size: 1rem; }
@@ -85,6 +156,7 @@
     </style>
 </head>
 <body>
+    <div class="particles" id="particles"></div>
     <div class="intro-container">
         <svg class="logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
             <path d="M20 20 H80 V80 H20 Z" fill="url(#grad1)" stroke="#00ddeb" stroke-width="4"/>
@@ -94,18 +166,33 @@
             <defs>
                 <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
                     <stop offset="0%" style="stop-color:#ff477e;stop-opacity:1" />
-                    <stop offset="100%" style="stop-color:#00ddeb;stop-opacity:1" />
+                    <stop offset="50%" style="stop-color:#00ddeb;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#6b48ff;stop-opacity:1" />
                 </linearGradient>
             </defs>
         </svg>
         <h1>ToolVerse</h1>
-        <p>Your Professional Productivity Suite</p>
+        <p>Unleash Your Productivity Cosmos</p>
         <div class="loader">
             <div class="loader-bar"></div>
         </div>
     </div>
 
     <script>
+        // Generate Particles
+        const particleContainer = document.getElementById('particles');
+        for (let i = 0; i < 50; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            particle.style.width = `${Math.random() * 5 + 2}px`;
+            particle.style.height = particle.style.width;
+            particle.style.left = `${Math.random() * 100}vw`;
+            particle.style.top = `${Math.random() * 100}vh`;
+            particle.style.animationDelay = `${Math.random() * 5}s`;
+            particleContainer.appendChild(particle);
+        }
+
+        // Redirect after 3 seconds
         setTimeout(() => {
             window.location.href = 'index.html';
         }, 3000);
