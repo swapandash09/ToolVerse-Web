@@ -1,32 +1,66 @@
+<!-- tools/image-compressor.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Compressor - ToolVerse</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/all.min.css">
-    <link rel="stylesheet" href="common.css"> <!-- Changed from ../assets/tool-styles.css -->
+    <title>ToolVerse - Image Compressor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <div class="tool-container">
-        <h2><i class="fas fa-compress-arrows-alt"></i> Image Compressor</h2>
-        <div class="upload-section">
-            <input type="file" id="imageInput" accept="image/*">
-            <div class="preview-container">
-                <img id="previewImage" src="" alt="Image Preview" style="display: none;">
-                <p id="noPreview">No image selected</p>
+    <div class="app-container" data-theme="light">
+        <header class="top-header">
+            <div class="logo-section">
+                <svg class="logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 20 H80 V80 H20 Z" fill="url(#grad1)" stroke="#00b4d8" stroke-width="4"/>
+                    <rect x="40" y="10" width="20" height="20" fill="#ff2e63" rx="5"/>
+                    <circle cx="50" cy="50" r="15" fill="none" stroke="#ffffff" stroke-width="3"/>
+                    <path d="M45 45 L55 55 M55 45 L45 55" stroke="#ffffff" stroke-width="3"/>
+                    <defs>
+                        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#ff2e63;stop-opacity:1" />
+                            <stop offset="50%" style="stop-color:#00b4d8;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#7b2cbf;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <h1>ToolVerse</h1>
             </div>
-        </div>
-        <div class="controls">
-            <label for="quality">Quality: <span id="qualityValue">75%</span></label>
-            <input type="range" id="quality" min="10" max="100" value="75">
-            <button onclick="compressImage()">Compress</button>
-            <button id="downloadBtn" onclick="downloadImage()" disabled>Download</button>
-        </div>
-        <p id="result">Upload an image to compress</p>
-        <a href="../index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Dashboard</a>
+            <nav class="top-nav">
+                <div class="nav-item" data-section="home"><i class="fas fa-home"></i> Home</div>
+                <div class="nav-item active" data-section="tools"><i class="fas fa-toolbox"></i> Tools</div>
+                <div class="nav-item" data-section="services"><i class="fas fa-concierge-bell"></i> Services</div>
+                <div class="nav-item" data-section="contact"><i class="fas fa-address-book"></i> Contact</div>
+                <div class="nav-item" data-section="settings"><i class="fas fa-cog"></i> Settings</div>
+                <div class="nav-item" data-section="profile"><i class="fas fa-user"></i> Profile</div>
+            </nav>
+            <div class="header-controls">
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="toolSearch" placeholder="Search Tools..." aria-label="Search Tools">
+                </div>
+                <button class="theme-toggle" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button>
+                <div class="profile">
+                    <img src="https://api.dicebear.com/7.x/identicon/svg?seed=user" alt="User Avatar" class="avatar">
+                    <span class="username">Guest</span>
+                </div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <section class="tool-page">
+                <h1>Image Compressor</h1>
+                <div class="content">
+                    <p>Optimize your images effortlessly with advanced compression.</p>
+                    <input type="file" id="imageUpload" accept="image/*">
+                    <textarea placeholder="Add notes or settings..." rows="4"></textarea>
+                    <button onclick="compressImage()">Compress Now</button>
+                </div>
+            </section>
+        </main>
     </div>
-    <script src="image_compressor.js"></script>
+    <script src="../script.js"></script>
 </body>
 </html>
