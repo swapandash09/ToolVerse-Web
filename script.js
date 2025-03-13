@@ -1,155 +1,54 @@
-// Navigation Handling
-document.querySelectorAll('.nav-item').forEach(item => {
-    item.addEventListener('click', function() {
-        // Remove active class from all nav items
-        document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
-        this.classList.add('active');
+// script.js
+document.addEventListener('DOMContentLoaded', () => {
+    const navItems = document.querySelectorAll('.nav-item');
+    const contentSections = document.querySelectorAll('.content-section');
+    const themeToggle = document.querySelector('.theme-toggle');
+    const appContainer = document.querySelector('.app-container');
+    const toolSearch = document.getElementById('toolSearch');
 
-        // Show corresponding section
-        const sectionId = this.getAttribute('data-section');
-        document.querySelectorAll('.content-section').forEach(section => section.classList.remove('active'));
-        document.getElementById(sectionId).classList.add('active');
+    // Navigation for dashboard.html
+    if (contentSections.length > 0) { // Check if we're on dashboard.html
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                // Only handle section navigation for items with data-section
+                if (item.hasAttribute('data-section')) {
+                    navItems.forEach(i => i.classList.remove('active'));
+                    item.classList.add('active');
 
-        // Smooth scroll to top of content on mobile
-        if (window.innerWidth <= 768) {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-    });
-});
-
-// Theme Toggle (Header Button)
-document.querySelector('.theme-toggle').addEventListener('click', function() {
-    const app = document.querySelector('.app-container');
-    const currentTheme = app.dataset.theme;
-    app.dataset.theme = currentTheme === 'light' ? 'dark' : 'light';
-    updateThemeStatus(app.dataset.theme);
-});
-
-// Theme Switcher (Settings)
-document.querySelectorAll('.theme-btn').forEach(btn => {
-    btn.addEventListener('click', function() {
-        const theme = this.getAttribute('data-theme');
-        document.querySelector('.app-container').dataset.theme = theme;
-        updateThemeStatus(theme);
-
-        // Save theme preference to localStorage
-        localStorage.setItem('toolverseTheme', theme);
-    });
-});
-
-// Update Theme Status Text
-function updateThemeStatus(theme) {
-    document.getElementById('themeStatus').textContent = `Current Theme: ${theme.charAt(0).toUpperCase() + theme.slice(1)}`;
-}
-
-// Load Saved Theme on Page Load
-document.addEventListener('DOMContentLoaded', function() {
-    const savedTheme = localStorage.getItem('toolverseTheme') || 'light';
-    document.querySelector('.app-container').dataset.theme = savedTheme;
-    updateThemeStatus(savedTheme);
-});
-
-// Tool Search Functionality
-document.getElementById('toolSearch').addEventListener('input', function(e) {
-    const searchTerm = e.target.value.toLowerCase().trim();
-    document.querySelectorAll('.tool-card').forEach(card => {
-        const title = card.querySelector('a').textContent.toLowerCase();
-        card.style.display = title.includes(searchTerm) ? 'flex' : 'none';
-    });
-
-    // If in tools section, ensure visibility
-    const toolsSection = document.getElementById('tools');
-    if (searchTerm && !toolsSection.classList.contains('active')) {
-        document.querySelectorAll('.content-section').forEach(section => section.classList.remove('active'));
-        toolsSection.classList.add('active');
-        document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
-        document.querySelector('.nav-item[data-section="tools"]').classList.add('active');
-    }
-});
-
-// Storage Permission Functions
-function requestStoragePermission() {
-    try {
-        // Simulate permission request (actual implementation depends on browser APIs)
-        if ('permissions' in navigator) {
-            navigator.permissions.request({ name: 'persistent-storage' }).then(() => {
-                document.getElementById('storageStatus').textContent = 'Status: Granted';
-                localStorage.setItem('storagePermission', 'granted');
-            }).catch(() => {
-                document.getElementById('storageStatus').textContent = 'Status: Denied by Browser';
+                    const section = item.getAttribute('data-section');
+                    contentSections.forEach(s => s.classList.remove('active'));
+                    document.getElementById(section).classList.add('active');
+                }
             });
-        } else {
-            document.getElementById('storageStatus').textContent = 'Status: Granted (Simulated)';
-            localStorage.setItem('storagePermission', 'granted');
-        }
-    } catch (error) {
-        console.error('Storage Permission Error:', error);
-        document.getElementById('storageStatus').textContent = 'Status: Error';
+        });
     }
-}
 
-function denyStoragePermission() {
-    document.getElementById('storageStatus').textContent = 'Status: Denied';
-    localStorage.setItem('storagePermission', 'denied');
-}
-
-// Load Storage Permission Status
-document.addEventListener('DOMContentLoaded', function() {
-    const permission = localStorage.getItem('storagePermission');
-    if (permission) {
-        document.getElementById('storageStatus').textContent = `Status: ${permission.charAt(0).toUpperCase() + permission.slice(1)}`;
+    // Theme Toggle
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = appContainer.getAttribute('data-theme');
+            if (currentTheme === 'light') {
+                appContainer.setAttribute('data-theme', 'dark');
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            } else if (currentTheme === 'dark') {
+                appContainer.setAttribute('data-theme', 'cosmic');
+            } else {
+                appContainer.setAttribute('data-theme', 'light');
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+            }
+        });
     }
-});
 
-// Contact Form Submission (Simulated)
-function sendContact() {
-    const email = document.getElementById('contactEmail').value;
-    const message = document.getElementById('contactMessage').value;
-    if (email && message) {
-        // Simulate sending (replace with actual API call if needed)
-        console.log('Contact Form Submitted:', { email, message });
-        alert('Message sent successfully! (Simulated)');
-        document.getElementById('contactEmail').value = '';
-        document.getElementById('contactMessage').value = '';
-    } else {
-        alert('Please fill in all fields.');
+    // Tool Search (only on dashboard.html)
+    if (toolSearch) {
+        toolSearch.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const toolCards = document.querySelectorAll('.tool-card');
+
+            toolCards.forEach(card => {
+                const toolName = card.querySelector('a').textContent.toLowerCase();
+                card.style.display = toolName.includes(searchTerm) ? 'block' : 'none';
+            });
+        });
     }
-}
-
-// Lazy Load Tool Previews (Optional Enhancement)
-document.addEventListener('scroll', function() {
-    const toolCards = document.querySelectorAll('.tool-card');
-    toolCards.forEach(card => {
-        const rect = card.getBoundingClientRect();
-        if (rect.top < window.innerHeight && !card.classList.contains('loaded')) {
-            card.classList.add('loaded');
-            card.style.opacity = '1';
-            card.style.transform = 'translateY(0)';
-        }
-    });
-});
-
-// Smooth Scroll for Anchor Links (if any)
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({ behavior: 'smooth' });
-        }
-    });
-});
-
-// Handle Window Resize for Responsive Adjustments
-let timeout;
-window.addEventListener('resize', function() {
-    clearTimeout(timeout);
-    timeout = setTimeout(() => {
-        const sidebar = document.querySelector('.sidebar');
-        if (window.innerWidth <= 768) {
-            sidebar.style.transform = 'translateY(0)';
-        } else {
-            sidebar.style.transform = 'translateX(0)';
-        }
-    }, 100);
 });
