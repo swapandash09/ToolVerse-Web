@@ -1,4 +1,3 @@
-<!-- dashboard.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,12 +7,51 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Quick inline fixes for sizing - ideally move to styles.css */
+        :root {
+            --max-width: 1200px;
+            --sidebar-width: 250px;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+        .app-container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .top-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .top-nav {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .dashboard-stats, .tool-grid, .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .tool-card, .stat-card, .service-card {
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
     <div class="app-container" data-theme="light">
         <header class="top-header">
             <div class="logo-section">
-                <svg class="logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <svg class="logo" width="40" height="40" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
                     <path d="M20 20 H80 V80 H20 Z" fill="url(#grad1)" stroke="#00b4d8" stroke-width="4"/>
                     <rect x="40" y="10" width="20" height="20" fill="#ff2e63" rx="5"/>
                     <circle cx="50" cy="50" r="15" fill="none" stroke="#ffffff" stroke-width="3"/>
@@ -44,7 +82,7 @@
                 </div>
                 <button class="theme-toggle" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button>
                 <div class="profile">
-                    <img src="https://api.dicebear.com/7.x/identicon/svg?seed=user" alt="User Avatar" class="avatar">
+                    <img src="https://api.dicebear.com/7.x/identicon/svg?seed=user" alt="User Avatar" class="avatar" width="32" height="32">
                     <span class="username">Guest</span>
                 </div>
             </div>
@@ -58,17 +96,17 @@
                 </div>
                 <div class="dashboard-stats">
                     <div class="stat-card">
-                        <i class="fas fa-users"></i>
+                        <i class="fas fa-users fa-2x"></i>
                         <h3>10K+</h3>
                         <p>Active Users</p>
                     </div>
                     <div class="stat-card">
-                        <i class="fas fa-tools"></i>
+                        <i class="fas fa-tools fa-2x"></i>
                         <h3>50+</h3>
                         <p>Tools Available</p>
                     </div>
                     <div class="stat-card">
-                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star fa-2x"></i>
                         <h3>4.8</h3>
                         <p>User Rating</p>
                     </div>
@@ -80,42 +118,42 @@
                     <h3>Our Tools</h3>
                     <div class="tool-grid">
                         <div class="tool-card">
-                            <i class="fas fa-compress"></i>
+                            <i class="fas fa-compress fa-2x"></i>
                             <a href="tools/image-compressor.html">Image Compressor</a>
                             <p>Optimize images effortlessly</p>
                         </div>
                         <div class="tool-card">
-                            <i class="fas fa-file-pdf"></i>
+                            <i class="fas fa-file-pdf fa-2x"></i>
                             <a href="tools/pdf-to-jpg.html">PDF to JPG</a>
                             <p>Convert PDFs to images</p>
                         </div>
                         <div class="tool-card">
-                            <i class="fas fa-edit"></i>
+                            <i class="fas fa-edit fa-2x"></i>
                             <a href="tools/text-editor.html">Text Editor</a>
                             <p>Edit text on the go</p>
                         </div>
                         <div class="tool-card">
-                            <i class="fas fa-file"></i>
+                            <i class="fas fa-file fa-2x"></i>
                             <a href="tools/file-converter.html">File Converter</a>
                             <p>Convert files with ease</p>
                         </div>
                         <div class="tool-card">
-                            <i class="fas fa-tasks"></i>
+                            <i class="fas fa-tasks fa-2x"></i>
                             <a href="tools/task-manager.html">Task Manager</a>
                             <p>Organize your tasks</p>
                         </div>
                         <div class="tool-card">
-                            <i class="fas fa-image"></i>
+                            <i class="fas fa-image fa-2x"></i>
                             <a href="tools/image-resizer.html">Image Resizer</a>
                             <p>Resize images perfectly</p>
                         </div>
                         <div class="tool-card">
-                            <i class="fas fa-calculator"></i>
+                            <i class="fas fa-calculator fa-2x"></i>
                             <a href="tools/calculator.html">Calculator</a>
                             <p>Quick calculations</p>
                         </div>
                         <div class="tool-card">
-                            <i class="fas fa-camera"></i>
+                            <i class="fas fa-camera fa-2x"></i>
                             <a href="tools/jpg-to-pdf.html">JPG to PDF</a>
                             <p>Convert images to PDF</p>
                         </div>
@@ -126,17 +164,17 @@
             <section id="services" class="content-section">
                 <div class="services-grid">
                     <div class="service-card">
-                        <i class="fas fa-cloud"></i>
+                        <i class="fas fa-cloud fa-2x"></i>
                         <h3>Cloud Storage</h3>
                         <p>Secure and scalable storage solutions.</p>
                     </div>
                     <div class="service-card">
-                        <i class="fas fa-shield-alt"></i>
+                        <i class="fas fa-shield-alt fa-2x"></i>
                         <h3>Security</h3>
                         <p>Top-notch protection for your data.</p>
                     </div>
                     <div class="service-card">
-                        <i class="fas fa-headset"></i>
+                        <i class="fas fa-headset fa-2x"></i>
                         <h3>Support</h3>
                         <p>24/7 customer support available.</p>
                     </div>
@@ -146,11 +184,13 @@
             <section id="contact" class="content-section">
                 <div class="contact-form">
                     <h3>Contact Us</h3>
-                    <input type="text" placeholder="Your Name" aria-label="Your Name">
-                    <input type="email" placeholder="Your Email" aria-label="Your Email">
-                    <textarea placeholder="Your Message" rows="5" aria-label="Your Message"></textarea>
-                    <button>Send Message</button>
-                </div>
+                    <form>
+                        <input type="text" placeholder="Your Name" aria-label="Your Name" required>
+                        <input type="email" placeholder="Your Email" aria-label="Your Email" required>
+                        <textarea placeholder="Your Message" rows="5" aria-label="Your Message" required></textarea>
+                        <button type="submit">Send Message</button>
+                    </form>
+               ugs</div>
             </section>
 
             <section id="settings" class="content-section">
@@ -166,7 +206,7 @@
 
             <section id="profile" class="content-section">
                 <div class="profile-card">
-                    <img src="https://api.dicebear.com/7.x/identicon/svg?seed=user" alt="Profile Avatar" class="profile-avatar">
+                    <img src="https://api.dicebear.com/7.x/identicon/svg?seed=user" alt="Profile Avatar" class="profile-avatar" width="100" height="100">
                     <h3>Guest</h3>
                     <p>Joined: Jan 2023</p>
                 </div>
