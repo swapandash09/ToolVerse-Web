@@ -7,103 +7,103 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
-<body class="bg-gray-50 font-sans text-gray-900">
-    <header class="bg-indigo-600 text-white py-4 sticky top-0 z-10 shadow-md">
+<body class="bg-gradient-to-br from-gray-900 via-teal-900 to-black font-sans text-white">
+    <header class="bg-teal-800 text-white py-4 sticky top-0 z-10 shadow-lg holographic">
         <div class="container mx-auto flex justify-between items-center px-4">
             <div class="flex items-center">
-                <img src="assets/images/logo.png" alt="ToolVerse Logo" class="h-12 animate-pulse">
-                <h1 class="text-2xl font-bold ml-4">ToolVerse Dashboard</h1>
+                <div class="logo h-12 w-12 animate-spin-3d"></div>
+                <h1 class="text-2xl font-bold ml-4 neon-text">ToolVerse Dashboard</h1>
             </div>
             <nav class="space-x-4">
-                <a href="#services" class="hover:underline">Services</a>
-                <a href="#contact" class="hover:underline">Contact</a>
-                <a href="#team" class="hover:underline">Team</a>
-                <a href="#about" class="hover:underline">About</a>
+                <a href="#services" class="hover:text-teal-300 transition">Services</a>
+                <a href="#contact" class="hover:text-teal-300 transition">Contact</a>
+                <a href="#team" class="hover:text-teal-300 transition">Team</a>
+                <a href="#about" class="hover:text-teal-300 transition">About</a>
             </nav>
         </div>
     </header>
     <main class="container mx-auto py-8">
         <section id="tools" class="mb-12">
-            <h2 class="text-3xl font-bold text-center mb-8 animate-fade-in">Our Tools</h2>
+            <h2 class="text-3xl font-bold text-center mb-8 animate-fade-in neon-text">Our Tools</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <a href="tools/calculator.html" class="tool-card bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition transform hover:-translate-y-2">
-                    <img src="assets/images/tool-icons/calculator-icon.svg" alt="Calculator Icon" class="h-16 mx-auto mb-4">
-                    <h3 class="text-xl font-semibold text-center">Calculator</h3>
-                    <p class="text-center">Perform quick calculations.</p>
+                <a href="tools/calculator.html" class="tool-card bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition transform hover:-translate-y-2 hover:bg-teal-700">
+                    <div class="tool-icon calculator-icon"></div>
+                    <h3 class="text-xl font-semibold text-center mt-4">Calculator</h3>
+                    <p class="text-center text-gray-300">Perform quick calculations.</p>
                 </a>
-                <a href="tools/color_picker.html" class="tool-card bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition transform hover:-translate-y-2">
-                    <img src="assets/images/tool-icons/color-picker-icon.svg" alt="Color Picker Icon" class="h-16 mx-auto mb-4">
-                    <h3 class="text-xl font-semibold text-center">Color Picker</h3>
-                    <p class="text-center">Select and copy colors.</p>
+                <a href="tools/color_picker.html" class="tool-card bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition transform hover:-translate-y-2 hover:bg-teal-700">
+                    <div class="tool-icon color-picker-icon"></div>
+                    <h3 class="text-xl font-semibold text-center mt-4">Color Picker</h3>
+                    <p class="text-center text-gray-300">Select and copy colors.</p>
                 </a>
-                <a href="tools/image_compressor.html" class="tool-card bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition transform hover:-translate-y-2">
-                    <img src="assets/images/tool-icons/image-compressor-icon.svg" alt="Image Compressor Icon" class="h-16 mx-auto mb-4">
-                    <h3 class="text-xl font-semibold text-center">Image Compressor</h3>
-                    <p class="text-center">Compress images efficiently.</p>
+                <a href="tools/image_compressor.html" class="tool-card bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition transform hover:-translate-y-2 hover:bg-teal-700">
+                    <div class="tool-icon image-compressor-icon"></div>
+                    <h3 class="text-xl font-semibold text-center mt-4">Image Compressor</h3>
+                    <p class="text-center text-gray-300">Compress images efficiently.</p>
                 </a>
-                <a href="tools/image_resizer.html" class="tool-card bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition transform hover:-translate-y-2">
-                    <img src="assets/images/tool-icons/image-resizer-icon.svg" alt="Image Resizer Icon" class="h-16 mx-auto mb-4">
-                    <h3 class="text-xl font-semibold text-center">Image Resizer</h3>
-                    <p class="text-center">Resize images with ease.</p>
+                <a href="tools/image_resizer.html" class="tool-card bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition transform hover:-translate-y-2 hover:bg-teal-700">
+                    <div class="tool-icon image-resizer-icon"></div>
+                    <h3 class="text-xl font-semibold text-center mt-4">Image Resizer</h3>
+                    <p class="text-center text-gray-300">Resize images with ease.</p>
                 </a>
-                <a href="tools/jpg_to_pdf.html" class="tool-card bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition transform hover:-translate-y-2">
-                    <img src="assets/images/tool-icons/jpg-to-pdf-icon.svg" alt="JPG to PDF Icon" class="h-16 mx-auto mb-4">
-                    <h3 class="text-xl font-semibold text-center">JPG to PDF</h3>
-                    <p class="text-center">Convert JPG to PDF.</p>
+                <a href="tools/jpg_to_pdf.html" class="tool-card bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition transform hover:-translate-y-2 hover:bg-teal-700">
+                    <div class="tool-icon jpg-to-pdf-icon"></div>
+                    <h3 class="text-xl font-semibold text-center mt-4">JPG to PDF</h3>
+                    <p class="text-center text-gray-300">Convert JPG to PDF.</p>
                 </a>
-                <a href="tools/pdf_to_jpg.html" class="tool-card bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition transform hover:-translate-y-2">
-                    <img src="assets/images/tool-icons/pdf-to-jpg-icon.svg" alt="PDF to JPG Icon" class="h-16 mx-auto mb-4">
-                    <h3 class="text-xl font-semibold text-center">PDF to JPG</h3>
-                    <p class="text-center">Convert PDF to JPG.</p>
+                <a href="tools/pdf_to_jpg.html" class="tool-card bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition transform hover:-translate-y-2 hover:bg-teal-700">
+                    <div class="tool-icon pdf-to-jpg-icon"></div>
+                    <h3 class="text-xl font-semibold text-center mt-4">PDF to JPG</h3>
+                    <p class="text-center text-gray-300">Convert PDF to JPG.</p>
                 </a>
-                <a href="tools/page.html" class="tool-card bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition transform hover:-translate-y-2">
-                    <img src="assets/images/tool-icons/page-icon.svg" alt="Page Icon" class="h-16 mx-auto mb-4">
-                    <h3 class="text-xl font-semibold text-center">Page Tools</h3>
-                    <p class="text-center">Manage web pages.</p>
+                <a href="tools/page.html" class="tool-card bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition transform hover:-translate-y-2 hover:bg-teal-700">
+                    <div class="tool-icon page-icon"></div>
+                    <h3 class="text-xl font-semibold text-center mt-4">Page Tools</h3>
+                    <p class="text-center text-gray-300">Manage web pages.</p>
                 </a>
-                <a href="tools/qr_code_generator.html" class="tool-card bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition transform hover:-translate-y-2">
-                    <img src="assets/images/tool-icons/qr-code-icon.svg" alt="QR Code Generator Icon" class="h-16 mx-auto mb-4">
-                    <h3 class="text-xl font-semibold text-center">QR Code Generator</h3>
-                    <p class="text-center">Generate QR codes instantly.</p>
+                <a href="tools/qr_code_generator.html" class="tool-card bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition transform hover:-translate-y-2 hover:bg-teal-700">
+                    <div class="tool-icon qr-code-icon"></div>
+                    <h3 class="text-xl font-semibold text-center mt-4">QR Code Generator</h3>
+                    <p class="text-center text-gray-300">Generate QR codes instantly.</p>
                 </a>
-                <a href="tools/scanned_to_pdf.html" class="tool-card bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition transform hover:-translate-y-2">
-                    <img src="assets/images/tool-icons/scanned-to-pdf-icon.svg" alt="Scanned to PDF Icon" class="h-16 mx-auto mb-4">
-                    <h3 class="text-xl font-semibold text-center">Scanned to PDF</h3>
-                    <p class="text-center">Convert scanned docs to PDF.</p>
+                <a href="tools/scanned_to_pdf.html" class="tool-card bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition transform hover:-translate-y-2 hover:bg-teal-700">
+                    <div class="tool-icon scanned-to-pdf-icon"></div>
+                    <h3 class="text-xl font-semibold text-center mt-4">Scanned to PDF</h3>
+                    <p class="text-center text-gray-300">Convert scanned docs to PDF.</p>
                 </a>
-                <a href="tools/text_editor.html" class="tool-card bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition transform hover:-translate-y-2">
-                    <img src="assets/images/tool-icons/text-editor-icon.svg" alt="Text Editor Icon" class="h-16 mx-auto mb-4">
-                    <h3 class="text-xl font-semibold text-center">Text Editor</h3>
-                    <p class="text-center">Edit text with ease.</p>
+                <a href="tools/text_editor.html" class="tool-card bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition transform hover:-translate-y-2 hover:bg-teal-700">
+                    <div class="tool-icon text-editor-icon"></div>
+                    <h3 class="text-xl font-semibold text-center mt-4">Text Editor</h3>
+                    <p class="text-center text-gray-300">Edit text with ease.</p>
                 </a>
             </div>
         </section>
         <section id="services" class="mb-12">
-            <h2 class="text-3xl font-bold text-center mb-8">Services</h2>
-            <p class="text-center max-w-2xl mx-auto">We offer a suite of tools for image processing, document conversion, QR code generation, and text editing to boost your productivity and creativity.</p>
+            <h2 class="text-3xl font-bold text-center mb-8 animate-fade-in neon-text">Services</h2>
+            <p class="text-center max-w-2xl mx-auto glow-text">We offer a cosmic suite of tools for image processing, document conversion, QR code creation, and text editing to elevate your productivity.</p>
         </section>
         <section id="contact" class="mb-12">
-            <h2 class="text-3xl font-bold text-center mb-8">Contact Us</h2>
-            <p class="text-center">Email: support@toolverse.com | Phone: +91-123-456-7890</p>
+            <h2 class="text-3xl font-bold text-center mb-8 animate-fade-in neon-text">Contact Us</h2>
+            <p class="text-center glow-text">Email: support@toolverse.com | Phone: +91-123-456-7890</p>
         </section>
         <section id="team" class="mb-12">
-            <h2 class="text-3xl font-bold text-center mb-8">Our Team</h2>
-            <p class="text-center max-w-2xl mx-auto">Meet our dedicated team of developers and designers building innovative tools for you.</p>
+            <h2 class="text-3xl font-bold text-center mb-8 animate-fade-in neon-text">Our Team</h2>
+            <p class="text-center max-w-2xl mx-auto glow-text">Meet the stellar team crafting innovative tools for your journey.</p>
         </section>
         <section id="conditions" class="mb-12">
-            <h2 class="text-3xl font-bold text-center mb-8">Terms & Conditions</h2>
-            <p class="text-center max-w-2xl mx-auto">Use our tools responsibly. Do not misuse or redistribute without permission.</p>
+            <h2 class="text-3xl font-bold text-center mb-8 animate-fade-in neon-text">Terms & Conditions</h2>
+            <p class="text-center max-w-2xl mx-auto glow-text">Use our tools responsibly and avoid unauthorized redistribution.</p>
         </section>
         <section id="about" class="mb-12">
-            <h2 class="text-3xl font-bold text-center mb-8">About Us</h2>
-            <p class="text-center max-w-2xl mx-auto">ToolVerse is a platform dedicated to providing innovative, user-friendly tools for everyone.</p>
+            <h2 class="text-3xl font-bold text-center mb-8 animate-fade-in neon-text">About Us</h2>
+            <p class="text-center max-w-2xl mx-auto glow-text">ToolVerse is your gateway to a universe of cutting-edge, user-friendly tools.</p>
         </section>
         <section id="version">
-            <h2 class="text-3xl font-bold text-center mb-8">Version</h2>
-            <p class="text-center">Current Version: 1.1.0</p>
+            <h2 class="text-3xl font-bold text-center mb-8 animate-fade-in neon-text">Version</h2>
+            <p class="text-center glow-text">Current Version: 1.1.0</p>
         </section>
     </main>
-    <footer class="bg-gray-800 text-white py-4 text-center">
+    <footer class="bg-gray-900 py-4 text-center">
         <p>© 2025 ToolVerse. All rights reserved.</p>
     </footer>
     <script src="assets/js/script.js"></script>
