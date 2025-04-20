@@ -2,16 +2,7 @@ body {
     font-family: 'Inter', sans-serif;
     overflow-x: hidden;
     transition: all 0.5s ease;
-}
-
-body.mode-dark {
-    background: linear-gradient(to bottom right, #1a1a2e, #0f3460, #16213e);
-    color: #e0e0e0;
-}
-
-body.mode-classic {
-    background: linear-gradient(to bottom right, #f0e6d2, #d9b38c, #b08968);
-    color: #4a2c2a;
+    background: linear-gradient(to bottom right, #1a1a2e, #0f3460, #16213e); /* Fallback gradient */
 }
 
 .logo {
@@ -58,72 +49,15 @@ section {
     padding: 20px;
 }
 
-/* Mode Switch Styles */
-.mode-switch {
-    display: flex;
-    align-items: center;
+/* Login Intro Styles */
+#loginIntro {
+    background: linear-gradient(to bottom right, #1a1a2e, #0f3460, #16213e);
+    transition: opacity 0.5s ease;
 }
 
-.switch {
-    position: relative;
-    display: inline-block;
-    width: 60px;
-    height: 34px;
-}
-
-.switch input {
+#loginIntro.opacity-0 {
     opacity: 0;
-    width: 0;
-    height: 0;
-}
-
-.slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    transition: 0.4s;
-    border-radius: 34px;
-}
-
-.slider:before {
-    position: absolute;
-    content: "";
-    height: 26px;
-    width: 26px;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
-    transition: 0.4s;
-    border-radius: 50%;
-}
-
-input:checked + .slider {
-    background-color: #2196F3;
-}
-
-input:checked + .slider:before {
-    transform: translateX(26px);
-}
-
-.mode-icon {
-    transition: transform 0.3s ease, color 0.3s ease;
-}
-
-.mode-icon:hover {
-    transform: scale(1.2);
-    color: #00ffff;
-}
-
-.dark-mode-icon {
-    color: #e0e0e0;
-}
-
-.classic-mode-icon {
-    color: #4a2c2a;
+    visibility: hidden;
 }
 
 /* Animations */
@@ -132,10 +66,32 @@ input:checked + .slider:before {
     100% { transform: rotateY(360deg); }
 }
 
-@keyframes holographic {
-    0% { background-position: 0% 0%; }
-    50% { background-position: 100% 100%; }
-    100% { background-position: 0% 0%; }
+@keyframes orbit {
+    0% { transform: translate(0, 0); }
+    50% { transform: translate(20px, -20px); }
+    100% { transform: translate(0, 0); }
+}
+
+@keyframes pulse-text {
+    0%, 100% { text-shadow: 0 0 5px #00ffff, 0 0 10px #ff00ff; }
+    50% { text-shadow: 0 0 10px #00ffff, 0 0 20px #ff00ff; }
+}
+
+@keyframes pulse-btn {
+    0%, 100% { box-shadow: 0 0 5px #00ffff, 0 0 10px #ff00ff; }
+    50% { box-shadow: 0 0 10px #00ffff, 0 0 20px #ff00ff; }
+}
+
+@keyframes fade-in-delay {
+    0% { opacity: 0; transform: translateY(20px); }
+    50% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slide-up-delay {
+    0% { opacity: 0; transform: translateY(30px); }
+    60% { opacity: 0; transform: translateY(30px); }
+    100% { opacity: 1; transform: translateY(0); }
 }
 
 .neon-text {
@@ -151,39 +107,53 @@ input:checked + .slider:before {
     animation: spin-3d 4s linear infinite;
 }
 
+.animate-orbit {
+    animation: orbit 6s ease-in-out infinite;
+}
+
+.animate-pulse-text {
+    animation: pulse-text 1.5s infinite;
+}
+
+.animate-slide-up {
+    animation: slide-up-delay 1s ease-out forwards;
+    opacity: 0;
+}
+
+.animate-fade-in-delay {
+    animation: fade-in-delay 1.5s ease-out forwards;
+    opacity: 0;
+}
+
+.animate-pulse-btn {
+    animation: pulse-btn 2s infinite;
+}
+
+@keyframes fade-in {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
 .animate-fade-in {
     animation: fade-in 0.8s ease-out forwards;
 }
 
-@keyframes pulse-text {
-    0%, 100% { text-shadow: 0 0 5px #00ffff, 0 0 10px #ff00ff; }
-    50% { text-shadow: 0 0 10px #00ffff, 0 0 20px #ff00ff; }
+@keyframes holographic {
+    0% { background-position: 0% 0%; }
+    50% { background-position: 100% 100%; }
+    100% { background-position: 0% 0%; }
 }
 
 /* Responsive adjustments */
 @media (max-width: 640px) {
-    .tool-card svg {
-        width: 12rem;
-        height: 12rem;
-    }
-    .tool-card h3 {
-        font-size: 1.25rem;
-    }
-    .tool-card p {
-        font-size: 0.875rem;
-    }
-    header nav {
-        display: none;
-    }
     .logo {
-        height: 10rem;
-        width: 10rem;
+        height: 24rem;
+        width: 24rem;
     }
-    .mode-switch {
-        flex-direction: column;
-        align-items: center;
+    #loginIntro h2 {
+        font-size: 2.5rem;
     }
-    .mode-icon {
-        margin: 0.5rem 0;
+    #loginIntro p {
+        font-size: 1.5rem;
     }
 }
