@@ -7,8 +7,15 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
-<body class="bg-gradient-to-br from-teal-900 via-purple-900 to-black font-sans text-white">
-    <header class="py-6">
+<body class="bg-gradient-to-br from-teal-900 via-purple-900 to-black font-sans text-white overflow-hidden">
+    <div id="preloader" class="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50">
+        <div class="text-center">
+            <div class="galaxy-spinner"></div>
+            <h2 class="text-4xl font-bold mt-4 neon-text animate-pulse-text">ToolVerse</h2>
+            <p class="text-xl mt-2 glow-text animate-fade-in">Igniting Creativity Across the Cosmos</p>
+        </div>
+    </div>
+    <header class="py-6" id="header">
         <div class="container mx-auto flex justify-between items-center px-4">
             <div class="flex items-center">
                 <div class="logo h-16 w-16 animate-spin-3d"></div>
@@ -17,7 +24,7 @@
             <p class="text-xl italic glow-text">"Unleash Your Creativity with Tools"</p>
         </div>
     </header>
-    <main class="container mx-auto py-12 text-center">
+    <main class="container mx-auto py-12 text-center hidden" id="main-content">
         <div class="relative">
             <h2 class="text-5xl font-extrabold mb-6 animate-pulse-text neon-text">Welcome to ToolVerse</h2>
             <p class="text-2xl mb-10 animate-slide-up glow-text">Dive into a cosmic hub of innovative tools crafted for your genius.</p>
@@ -28,8 +35,9 @@
             </div>
         </div>
     </main>
-    <footer class="bg-gray-900 py-4 text-center">
+    <footer class="bg-gray-900 py-4 text-center hidden" id="footer">
         <p>© 2025 ToolVerse. All rights reserved.</p>
     </footer>
+    <script src="assets/js/script.js"></script>
 </body>
 </html>
